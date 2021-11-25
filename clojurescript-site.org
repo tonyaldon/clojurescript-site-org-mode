@@ -1,63 +1,68 @@
 * About
-** Google Closure
+** Rationale
 :PROPEPTIES:
-:CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/about/closure.adoc]]
-:CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/about/closure
+:CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/about/rationale.adoc]]
+:CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/about/rationale
 :CLOJURESCRIPT_SITE_AUTHOR: Rich Hickey
 :CLOJURESCRIPT_SITE_DATE: 2016-07-29
-:CUSTOM_ID: content/about/closure
+:NEXTPAGE_CUSTOM_ID: content/about/differences
+:CUSTOM_ID: content/about/rationale
 :END:
-*** Motivations for using Google's Closure Tools
+*** JavaScript's Reach
   :PROPERTIES:
-  :CUSTOM_ID: _motivations_for_using_googles_closure_tools
+  :CUSTOM_ID: _javascripts_reach
   :END:
 
-Clojure is nothing if not practical and ClojureScript is no different. As more and more applications target web and mobile environments, the role and reach of JavaScript likewise expands beyond the confines of the browser into even more constrained environments such as mobile with ubiquitous networked paths between nodes. The Google Closure tools provides a robust set of [[http://code.google.com/closure/library/][libraries]], a strong [[http://code.google.com/closure/library/docs/introduction.html#deps][dependency management system]], and a sophisticated [[http://code.google.com/closure/compiler/][compiler]] each working toward an ultimate goal of reducing JavaScript code size. For ClojureScript, Google Closure provides a solution to the "library problem" for JavaScript in three distinct ways:
+There are many environments (e.g. browsers) in which JavaScript is the only programmable technology. There are others (e.g. mobile) where JavaScript is the most portable development approach. And JavaScript is widely used as an extension or scripting language, e.g. as an extension or indexing language in a database.
 
--  Libraries
+*** JavaScript is not Robust
+  :PROPERTIES:
+  :CUSTOM_ID: _javascript_is_not_robust
+  :END:
 
--  Dependency management
+However, even JavaScript's proponents will acknowledge its shortcomings. There are many dark corners in the language semantics. It is not particularly concise, and it's not well suited for metaprogramming or extension. Most troubling is that writing robust JavaScript programs, while possible, requires a combination of extensive discipline and convention, and conventions differ between development shops, communities and libraries.
 
--  Aggressive code minification
+*** Client-service Applications are on the Rise
+  :PROPERTIES:
+  :CUSTOM_ID: _client_service_applications_are_on_the_rise
+  :END:
 
-Each of these features represents thousands of hours of research, design, development, and testing. Therefore ClojureScript leverages them in its implementation, allowing the Clojure/core team and contributors to focus on enabling the power of Clojure wherever JavaScript is found.
+Initial use of JavaScript was oriented towards adding interaction to document/page oriented sites closely aligned to the linked hypertext design of the web. Increasingly JavaScript is being used to construct client-service applications (e.g. Google's apps), where the JavaScript represents an ongoing piece of logic, data, and UI connected to one or more network accessible services. Such applications place much greater demands on their JavaScript hosted portions.
 
-**** Libraries
+*** JavaScript Engines Gain Power
+  :PROPERTIES:
+  :CUSTOM_ID: _javascript_engines_gain_power
+  :END:
+
+As JavaScript has been called upon to do more and more, JavaScript engines have moved from simple interpreters to quite sophisticated and high performance execution platforms involving native code generation and classic and novel dynamic language optimizations. The engines, in the large, are specifically oriented towards JavaScript semantics and execution, i.e. they are not as general as the JVM and CLR.
+
+*** Google Leads the Way
+  :PROPERTIES:
+  :CUSTOM_ID: _google_leads_the_way
+  :END:
+
+As the leading purveyor of client-service applications, with tremendous resources and a vested interest in web-hosted applications, Google has cutting-edge technology in this area. From the V8 JS engine to the whole-program optimizing symbiotic pair of Closure library and the Closure compiler, Google has open sourced the most advanced technology available in this area. It is worthwhile to understand and leverage what they have provided.
+
+*** The Library Problem
+  :PROPERTIES:
+  :CUSTOM_ID: _the_library_problem
+  :END:
+
+As applications are asked to do more, developers will seek to use more, and larger, libraries. But many of the target platforms are memory constrained, or network connected, and there is much pressure to reduce code size. Minification makes each library smaller, but minification alone still dictates a code size equal to the sum of the minified library sizes. However, applications rarely use all of the code in the libraries they consume. Whole program optimization can be used to construct an application whose code size footprint consists only of the code actually used, regardless of the number or size of the libraries utilized. This is the strategy pursued by the Google Closure library and compiler pair.
+
+*** Opportunity
+  :PROPERTIES:
+  :CUSTOM_ID: _opportunity
+  :END:
+
+A development platform with extensive reach, portability, multi-vendor support, an optimization arms race, sophisticated tools, implemented on all new devices, and a call for richer and more sophisticated applications - what more could developers want? A different language, that's what. While efforts are underway to improve JavaScript, you can't significantly improve something with extensive reach in a timely manner - your improved version won't have the same reach for a long time, if ever. Thus JavaScript /as it currently exists/ is a given, and becomes the target, rather than the source language.
+
+**** ClojureScript
    :PROPERTIES:
-   :CUSTOM_ID: _libraries
+   :CUSTOM_ID: _clojurescript
    :END:
 
-ClojureScript is written in Clojure and ClojureScript interoperating with the Google Closure JavaScript libraries. However, ClojureScript can interoperate with *any* JavaScript library or framework. The use of the [[https://developers.google.com/closure/library/docs/overview][Google Closure]] libraries in the ClojureScript core is an implementation strategy allowing us to reduce dependencies and ensure compatibility with advanced mode compilation (see below).
-
-**** Dependency Management
-   :PROPERTIES:
-   :CUSTOM_ID: _dependency_management
-   :END:
-
-Google Closure's dependency management system offers three primitives =addDependency=, =provide=, and =require= that enable compile-time dependency inclusions. ClojureScript encapsulates these, providing access through the =ns= form. This capability is leveraged to allow fine-grained imports and exports of ClojureScript namespaces and functions and also external JavaScript libraries for interoperability purposes.
-
-**** Compiler
-   :PROPERTIES:
-   :CUSTOM_ID: _compiler
-   :END:
-
-Google's Closure Tools provide a [[http://en.wikipedia.org/wiki/Minification_(programming)][minification compiler]] available to the ClojureScript compilation process via command-line flags. In summary, the minification compiler receives generated JavaScript produced by the ClojureScript compiler and renames variables to shorter names, removes whitespace, removes comments, etc. in an effort to reduce the source size while maintaining the program semantics.
-
-***** Dead code analysis
-    :PROPERTIES:
-    :CUSTOM_ID: _dead_code_analysis
-    :END:
-
-[[http://code.google.com/closure/compiler/][Google's Closure compiler]] provides an [[http://code.google.com/closure/compiler/docs/api-tutorial3.html][advanced setting]] allowing a much more aggressive minification strategy than that outlined above. In fact, the Google Closure compiler uses highly sophisticated techniques for identifying and eliminating dead code (i.e. code that is never called nor reachable). The downside of this fact is that the style of the JavaScript code must [[http://code.google.com/closure/compiler/docs/limitations.html][conform to a strict standard]] in order to achieve maximum minification potential. Therefore, it is the goal of the ClojureScript team to ensure that the generated JavaScript code is maximally minifiable through an observance to said idioms and through the use of the Closure libraries and dependency system.
-
-**** Learn More
-   :PROPERTIES:
-   :CUSTOM_ID: _learn_more
-   :END:
-
-[[http://covers.oreilly.com/images/0636920001416/cat.gif]]
-
-The primary reference for the Google Closure tools is O'Reilly's *[[http://oreilly.com/catalog/0636920001416][Closure: The Definitive Guide]]* written by Michael Bolin. This book is highly recommended for anyone hoping to leverage the full power of ClojureScript interoperability, for ClojureScript contributors, and for those simply curious about advanced JavaScript techniques and tools.
+ClojureScript seeks to address the weak link in the client/embedded application development story by replacing JavaScript with Clojure, a robust, concise and powerful programming language. In its implementation, ClojureScript adopts the strategy of the Google Closure library and compiler, and is able to effectively leverage both tools, gaining a large, production-quality library and whole-program optimization. ClojureScript brings the rich data structure set, functional programming, macros, reader, destructuring, polymorphism constructs, state discipline and many other features of Clojure to every place JavaScript reaches.
 
 ** Differences from Clojure
 :PROPEPTIES:
@@ -65,6 +70,8 @@ The primary reference for the Google Closure tools is O'Reilly's *[[http://oreil
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/about/differences
 :CLOJURESCRIPT_SITE_AUTHOR: Rich Hickey
 :CLOJURESCRIPT_SITE_DATE: 2016-07-29
+:PREVPAGE_CUSTOM_ID: content/about/rationale
+:NEXTPAGE_CUSTOM_ID: content/about/closure
 :CUSTOM_ID: content/about/differences
 :END:
 
@@ -572,6 +579,67 @@ ClojureScript currently includes the following non-core namespaces ported from C
 
 Clojure and ClojureScript share the same [[https://clojure.org/contributing][Contributor Agreement and development process]].
 
+** Google Closure
+:PROPEPTIES:
+:CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/about/closure.adoc]]
+:CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/about/closure
+:CLOJURESCRIPT_SITE_AUTHOR: Rich Hickey
+:CLOJURESCRIPT_SITE_DATE: 2016-07-29
+:PREVPAGE_CUSTOM_ID: content/about/differences
+:CUSTOM_ID: content/about/closure
+:END:
+*** Motivations for using Google's Closure Tools
+  :PROPERTIES:
+  :CUSTOM_ID: _motivations_for_using_googles_closure_tools
+  :END:
+
+Clojure is nothing if not practical and ClojureScript is no different. As more and more applications target web and mobile environments, the role and reach of JavaScript likewise expands beyond the confines of the browser into even more constrained environments such as mobile with ubiquitous networked paths between nodes. The Google Closure tools provides a robust set of [[http://code.google.com/closure/library/][libraries]], a strong [[http://code.google.com/closure/library/docs/introduction.html#deps][dependency management system]], and a sophisticated [[http://code.google.com/closure/compiler/][compiler]] each working toward an ultimate goal of reducing JavaScript code size. For ClojureScript, Google Closure provides a solution to the "library problem" for JavaScript in three distinct ways:
+
+-  Libraries
+
+-  Dependency management
+
+-  Aggressive code minification
+
+Each of these features represents thousands of hours of research, design, development, and testing. Therefore ClojureScript leverages them in its implementation, allowing the Clojure/core team and contributors to focus on enabling the power of Clojure wherever JavaScript is found.
+
+**** Libraries
+   :PROPERTIES:
+   :CUSTOM_ID: _libraries
+   :END:
+
+ClojureScript is written in Clojure and ClojureScript interoperating with the Google Closure JavaScript libraries. However, ClojureScript can interoperate with *any* JavaScript library or framework. The use of the [[https://developers.google.com/closure/library/docs/overview][Google Closure]] libraries in the ClojureScript core is an implementation strategy allowing us to reduce dependencies and ensure compatibility with advanced mode compilation (see below).
+
+**** Dependency Management
+   :PROPERTIES:
+   :CUSTOM_ID: _dependency_management
+   :END:
+
+Google Closure's dependency management system offers three primitives =addDependency=, =provide=, and =require= that enable compile-time dependency inclusions. ClojureScript encapsulates these, providing access through the =ns= form. This capability is leveraged to allow fine-grained imports and exports of ClojureScript namespaces and functions and also external JavaScript libraries for interoperability purposes.
+
+**** Compiler
+   :PROPERTIES:
+   :CUSTOM_ID: _compiler
+   :END:
+
+Google's Closure Tools provide a [[http://en.wikipedia.org/wiki/Minification_(programming)][minification compiler]] available to the ClojureScript compilation process via command-line flags. In summary, the minification compiler receives generated JavaScript produced by the ClojureScript compiler and renames variables to shorter names, removes whitespace, removes comments, etc. in an effort to reduce the source size while maintaining the program semantics.
+
+***** Dead code analysis
+    :PROPERTIES:
+    :CUSTOM_ID: _dead_code_analysis
+    :END:
+
+[[http://code.google.com/closure/compiler/][Google's Closure compiler]] provides an [[http://code.google.com/closure/compiler/docs/api-tutorial3.html][advanced setting]] allowing a much more aggressive minification strategy than that outlined above. In fact, the Google Closure compiler uses highly sophisticated techniques for identifying and eliminating dead code (i.e. code that is never called nor reachable). The downside of this fact is that the style of the JavaScript code must [[http://code.google.com/closure/compiler/docs/limitations.html][conform to a strict standard]] in order to achieve maximum minification potential. Therefore, it is the goal of the ClojureScript team to ensure that the generated JavaScript code is maximally minifiable through an observance to said idioms and through the use of the Closure libraries and dependency system.
+
+**** Learn More
+   :PROPERTIES:
+   :CUSTOM_ID: _learn_more
+   :END:
+
+[[http://covers.oreilly.com/images/0636920001416/cat.gif]]
+
+The primary reference for the Google Closure tools is O'Reilly's *[[http://oreilly.com/catalog/0636920001416][Closure: The Definitive Guide]]* written by Michael Bolin. This book is highly recommended for anyone hoping to leverage the full power of ClojureScript interoperability, for ClojureScript contributors, and for those simply curious about advanced JavaScript techniques and tools.
+
 ** Functional Programming
 :PROPEPTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/about/functional-programming.adoc]]
@@ -725,70 +793,6 @@ In the absence of mutable local variables, looping and iteration must take a dif
 #+END_SRC
 
 For situations where mutual recursion is called for, recur can't be used. Instead, [[http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/trampoline][trampoline]] may be a good option.
-
-** Rationale
-:PROPEPTIES:
-:CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/about/rationale.adoc]]
-:CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/about/rationale
-:CLOJURESCRIPT_SITE_AUTHOR: Rich Hickey
-:CLOJURESCRIPT_SITE_DATE: 2016-07-29
-:CUSTOM_ID: content/about/rationale
-:END:
-*** JavaScript's Reach
-  :PROPERTIES:
-  :CUSTOM_ID: _javascripts_reach
-  :END:
-
-There are many environments (e.g. browsers) in which JavaScript is the only programmable technology. There are others (e.g. mobile) where JavaScript is the most portable development approach. And JavaScript is widely used as an extension or scripting language, e.g. as an extension or indexing language in a database.
-
-*** JavaScript is not Robust
-  :PROPERTIES:
-  :CUSTOM_ID: _javascript_is_not_robust
-  :END:
-
-However, even JavaScript's proponents will acknowledge its shortcomings. There are many dark corners in the language semantics. It is not particularly concise, and it's not well suited for metaprogramming or extension. Most troubling is that writing robust JavaScript programs, while possible, requires a combination of extensive discipline and convention, and conventions differ between development shops, communities and libraries.
-
-*** Client-service Applications are on the Rise
-  :PROPERTIES:
-  :CUSTOM_ID: _client_service_applications_are_on_the_rise
-  :END:
-
-Initial use of JavaScript was oriented towards adding interaction to document/page oriented sites closely aligned to the linked hypertext design of the web. Increasingly JavaScript is being used to construct client-service applications (e.g. Google's apps), where the JavaScript represents an ongoing piece of logic, data, and UI connected to one or more network accessible services. Such applications place much greater demands on their JavaScript hosted portions.
-
-*** JavaScript Engines Gain Power
-  :PROPERTIES:
-  :CUSTOM_ID: _javascript_engines_gain_power
-  :END:
-
-As JavaScript has been called upon to do more and more, JavaScript engines have moved from simple interpreters to quite sophisticated and high performance execution platforms involving native code generation and classic and novel dynamic language optimizations. The engines, in the large, are specifically oriented towards JavaScript semantics and execution, i.e. they are not as general as the JVM and CLR.
-
-*** Google Leads the Way
-  :PROPERTIES:
-  :CUSTOM_ID: _google_leads_the_way
-  :END:
-
-As the leading purveyor of client-service applications, with tremendous resources and a vested interest in web-hosted applications, Google has cutting-edge technology in this area. From the V8 JS engine to the whole-program optimizing symbiotic pair of Closure library and the Closure compiler, Google has open sourced the most advanced technology available in this area. It is worthwhile to understand and leverage what they have provided.
-
-*** The Library Problem
-  :PROPERTIES:
-  :CUSTOM_ID: _the_library_problem
-  :END:
-
-As applications are asked to do more, developers will seek to use more, and larger, libraries. But many of the target platforms are memory constrained, or network connected, and there is much pressure to reduce code size. Minification makes each library smaller, but minification alone still dictates a code size equal to the sum of the minified library sizes. However, applications rarely use all of the code in the libraries they consume. Whole program optimization can be used to construct an application whose code size footprint consists only of the code actually used, regardless of the number or size of the libraries utilized. This is the strategy pursued by the Google Closure library and compiler pair.
-
-*** Opportunity
-  :PROPERTIES:
-  :CUSTOM_ID: _opportunity
-  :END:
-
-A development platform with extensive reach, portability, multi-vendor support, an optimization arms race, sophisticated tools, implemented on all new devices, and a call for richer and more sophisticated applications - what more could developers want? A different language, that's what. While efforts are underway to improve JavaScript, you can't significantly improve something with extensive reach in a timely manner - your improved version won't have the same reach for a long time, if ever. Thus JavaScript /as it currently exists/ is a given, and becomes the target, rather than the source language.
-
-**** ClojureScript
-   :PROPERTIES:
-   :CUSTOM_ID: _clojurescript
-   :END:
-
-ClojureScript seeks to address the weak link in the client/embedded application development story by replacing JavaScript with Clojure, a robust, concise and powerful programming language. In its implementation, ClojureScript adopts the strategy of the Google Closure library and compiler, and is able to effectively leverage both tools, gaining a large, production-quality library and whole-program optimization. ClojureScript brings the rich data structure set, functional programming, macros, reader, destructuring, polymorphism constructs, state discipline and many other features of Clojure to every place JavaScript reaches.
 
 * Community
 ** Books {amp} Videos
