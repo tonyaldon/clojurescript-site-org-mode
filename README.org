@@ -1,0 +1,70 @@
+#+TITLE: Clojure website in org-mode
+#+AUTHOR: Tony aldon
+#+DATE: <2021-11-25 Thu>
+
+* About
+
+This repository contains the documentation of https://clojurescript.org/
+converted in a single org-mode file [[./clojurescript-site.org]].
+
+It's just a single file, so you can download it and read it right
+away.  But if you want to have the (local) links to work correctly you
+have to clone some other repositories.  See [[* Installation][Installation]] section.
+
+You might be interested in [[https://github.com/tonyaldon/clojure-site-org-mode][clojure-site-org-mode]].
+
+Note that the development of https://clojure.org/ happens in the
+Github repository https://github.com/clojure/clojurescript-site.
+
+* Installation
+
+The documentation is in the file [[./clojurescript-site.org]].
+
+* Converting clojure-site to one org file
+** Steps I followed to convert the asciidoc files into a single org file
+
+I describe here the steps I followed to convert the 248 asciidoc files
+constituing the Clojure documentation into a single org file.
+
+If I had to do it again I would maybe do it differently.
+
+Anyway here the description.
+
+To do the conversion I've used:
+- ~assciidoctor~, ~pandoc~, ~fd~, ~sed~,
+- ~bash~ "scripts",
+- ~emacs-lisp~ code,
+- interactive modification via ~emacs~ with ~rg.el~, ~isearch~,
+  ~query-replace-regexp~, ~iedit~, ~multiple-cursors~, keyboard macros,
+- manual proofreading and adjustment.
+
+First I cloned ~clojure-site~ repository:
+
+#+BEGIN_SRC bash
+git clone https://github.com/clojure/clojurescript-site.git
+#+END_SRC
+
+*** 01) asciidoc -> docbook -> org
+
+#+BEGIN_SRC bash :results output
+for f in `fd --no-ignore .adoc ./clojurescript-site/`; do
+    asciidoctor -b docbook $f -o tmpdocbook ;
+    pandoc --wrap=none -f docbook -t org -o tmporg tmpdocbook ;
+    sed -i -r 's/^[*]+ /*&/g' tmporg ;
+    sed -n "1p" < $f | sed -r "s/^= /* /g" > tmpfile;
+    path_in_content_dir_no_extension=`sed -E 's:.*/content/(.*).adoc:\1:g' <<< $f` ;
+    custom_id=`echo content/$path_in_content_dir_no_extension` ;
+    cljs_page=`echo https://clojurescript.org/$path_in_content_dir_no_extension` ;
+    printf ":PROPEPTIES:\n" >> tmpfile ;
+    printf ":CLOJURESCRIPT_SITE_FILE: [[./$f]]\n" >> tmpfile ;
+    printf ":CLOJURESCRIPT_SITE_PAGE: $cljs_page\n" >> tmpfile ;
+    printf ":CLOJURESCRIPT_SITE_AUTHOR: `sed -n "2p" < $f`\n" >> tmpfile ;
+    printf ":CLOJURESCRIPT_SITE_DATE: `sed -n "3p" < $f`\n" >> tmpfile ;
+    printf ":CUSTOM_ID: $custom_id\n" >> tmpfile ;
+    printf ":END:\n" >> tmpfile ;
+    cat tmpfile >> clojurescript-site.org ;
+    cat tmporg >> clojurescript-site.org ;
+done
+
+rm tmpdocbook tmporg tmpfile ;
+#+END_SRC
