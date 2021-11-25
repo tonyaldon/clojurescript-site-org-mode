@@ -55,7 +55,7 @@ for f in `fd --no-ignore .adoc ./clojurescript-site/`; do
     path_in_content_dir_no_extension=`sed -E 's:.*/content/(.*).adoc:\1:g' <<< $f` ;
     custom_id=`echo content/$path_in_content_dir_no_extension` ;
     cljs_page=`echo https://clojurescript.org/$path_in_content_dir_no_extension` ;
-    printf ":PROPEPTIES:\n" >> tmpfile ;
+    printf ":PROPERTIES:\n" >> tmpfile ;
     printf ":CLOJURESCRIPT_SITE_FILE: [[./$f]]\n" >> tmpfile ;
     printf ":CLOJURESCRIPT_SITE_PAGE: $cljs_page\n" >> tmpfile ;
     printf ":CLOJURESCRIPT_SITE_AUTHOR: `sed -n "2p" < $f`\n" >> tmpfile ;

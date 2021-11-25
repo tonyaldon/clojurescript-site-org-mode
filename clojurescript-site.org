@@ -1,6 +1,6 @@
 * About
 ** Rationale
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/about/rationale.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/about/rationale
 :CLOJURESCRIPT_SITE_AUTHOR: Rich Hickey
@@ -41,7 +41,7 @@ A development platform with extensive reach, portability, multi-vendor support, 
 ClojureScript seeks to address the weak link in the client/embedded application development story by replacing JavaScript with Clojure, a robust, concise and powerful programming language. In its implementation, ClojureScript adopts the strategy of the Google Closure library and compiler, and is able to effectively leverage both tools, gaining a large, production-quality library and whole-program optimization. ClojureScript brings the rich data structure set, functional programming, macros, reader, destructuring, polymorphism constructs, state discipline and many other features of Clojure to every place JavaScript reaches.
 
 ** Differences from Clojure
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/about/differences.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/about/differences
 :CLOJURESCRIPT_SITE_AUTHOR: Rich Hickey
@@ -466,7 +466,7 @@ ClojureScript currently includes the following non-core namespaces ported from C
 Clojure and ClojureScript share the same [[https://clojure.org/contributing][Contributor Agreement and development process]].
 
 ** Google Closure
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/about/closure.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/about/closure
 :CLOJURESCRIPT_SITE_AUTHOR: Rich Hickey
@@ -509,7 +509,7 @@ Google's Closure Tools provide a [[http://en.wikipedia.org/wiki/Minification_(pr
 The primary reference for the Google Closure tools is O'Reilly's *[[http://oreilly.com/catalog/0636920001416][Closure: The Definitive Guide]]* written by Michael Bolin. This book is highly recommended for anyone hoping to leverage the full power of ClojureScript interoperability, for ClojureScript contributors, and for those simply curious about advanced JavaScript techniques and tools.
 
 ** Functional Programming
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/about/functional-programming.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/about/functional-programming
 :CLOJURESCRIPT_SITE_AUTHOR: Rich Hickey
@@ -652,7 +652,7 @@ For situations where mutual recursion is called for, recur can't be used. Instea
 
 * Community
 ** Books {amp} Videos
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/books.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/books
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -693,7 +693,7 @@ Please support these fine books and videos about ClojureScript.
 -  [[https://shop.oreilly.com/product/0636920040316.do][Learning ClojureScript]]
 
 ** Building the compiler
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/building.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/building
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -718,7 +718,7 @@ At the end of the build output you will see a line similar to the one below, but
 This shows that ClojureScript 1.7.164 has been built, and is installed in your local Maven repo. To use it, specify your ClojureScript dependency as =[org.clojure/clojurescript "1.7.164"]= (but with the version number that you built).
 
 ** Dev
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/closure.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/closure
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -770,7 +770,7 @@ This will install the unshaded JAR in your local maven, take note of the version
 Test that the ClojureScript issue is resolved via a ClojureScript specific test.
 
 ** Companies
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/companies.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/companies
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -1059,7 +1059,7 @@ Below is a partial list of some companies using ClojureScript. To add your compa
 -  [[https://devblog.zimpler.com/blog/2015/08/12/clojurescript-from-zero-to-production-part-1/][Zimpler]]
 
 ** Contributing to ClojureScript
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/contributing.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/contributing
 :CLOJURESCRIPT_SITE_AUTHOR: Rich Hickey
@@ -1131,7 +1131,7 @@ Please see the [[https://clojure.org/community/contributing][Contributing]] page
 /*Many thanks for your contributions to ClojureScript!*/
 
 ** Contributing to This Site
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/contributing_site.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/contributing_site
 :CLOJURESCRIPT_SITE_AUTHOR: Alex Miller
@@ -1292,7 +1292,7 @@ Copyright © 2015 Rich Hickey and contributors
 All documentation contained in this repository is licensed by Rich Hickey under the [[https://www.eclipse.org/legal/epl-v10.html][Eclipse Public License v1.0]] unless otherwise noted.
 
 ** Custom REPLs
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/custom-repls.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/custom-repls
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -1352,7 +1352,7 @@ With [[https://github.com/clojure/clojurescript/commit/de15ba8f756457f9cb4f57588
 Custom REPLs may still want to further customize or control printing of stacktraces. A hook is provided, the REPL evaluation environment may implement =cljs.repl/IPrintStacktrace=. =-print-stacktrace= takes the mapped canonical stacktrace, the entire original error value, and all build options passed to the REPL.
 
 ** Dev
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/dev.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/dev
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -1380,7 +1380,7 @@ ClojureScript is developed using the same [[https://clojure.org/dev/dev][Contrib
 -  [[file:xref/../../../reference/bootstrapping][Bootstrapping the Compiler]]
 
 ** Editing
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/editing.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/editing
 :CLOJURESCRIPT_SITE_AUTHOR: Alex Miller
@@ -1640,7 +1640,7 @@ Asciidoc is an extensive language and there is likely some way to do anything yo
 -  [[https://asciidoctor.org/docs/user-manual][Asciidoctor user manual]]
 
 ** ClojureScript Libraries
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/libraries.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/libraries
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -1845,7 +1845,7 @@ Asciidoc is an extensive language and there is likely some way to do anything yo
 -  [[https://github.com/slagyr/speclj][speclj]] A TDD/BDD framework for Clojure and Clojurescript, based on RSpec.
 
 ** License
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/license.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/license
 :CLOJURESCRIPT_SITE_AUTHOR: Rich Hickey
@@ -1856,7 +1856,7 @@ Asciidoc is an extensive language and there is likely some way to do anything yo
 The use and distribution terms for this software are covered by the [[https://opensource.org/licenses/eclipse-1.0.php][Eclipse Public License 1.0]], which can be found in the file epl-v10.html at the root of this distribution. By using this software in any fashion, you are agreeing to be bound by the terms of this license. You must not remove this notice, or any other, from this software.
 
 ** Patches
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/patches.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/patches
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -1888,7 +1888,7 @@ Edit the ticket's Patch field to indicate either "Code" or "Code and Test". This
 Patches that modify files with Windows line endings may fail to apply. Running =git am --keep-cr < /path/to/CLJS-NNNN.patch= will generally apply the patch if it would otherwise apply cleanly (*i.e.* no merge conflicts).
 
 ** Reporting Bootstrap Issues
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/reporting-bootstrap-issues.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/reporting-bootstrap-issues
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -1929,7 +1929,7 @@ Frequently it is possible to do this with a couple of lines in a REPL. Here is a
 For more complex situations, reproduction could involve additional code, or even a new self-host unit test that exhibits the problem. Information on self-host unit tests is [[file:running-tests][here]].
 
 ** Reporting Issues
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/reporting-issues.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/reporting-issues
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -2022,7 +2022,7 @@ When finished, you can issue this to restore your ClojureScript checkout:
 #+END_SRC
 
 ** Community Resources
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/resources.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/resources
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -2091,7 +2091,7 @@ ClojureScript does not take pull requests. Please follow the links below to cont
 -  Become a [[https://clojure.org/dev/contributor_agreement][Contributor]]
 
 ** Running the Tests
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/running-tests.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/running-tests
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -2234,7 +2234,7 @@ In addition, you might only be comfortable after some manual verification - if o
 
 * Guide
 ** Code Splitting
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/guides/code-splitting.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/guides/code-splitting
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -2369,7 +2369,7 @@ If you examine the split files in =out= you will see that =foo.js= is larger tha
 Because the code in splits is running in JavaScript's global scope, sometimes it may interfere with other JavaScript loaded on the same page (i.e. analytics), which may result in unpredictable behaviour. If this is a problem for your application prefix all variables in generated JavaScript by specifiyng =:rename-prefix= compiler option.
 
 ** Externs
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/guides/externs.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/guides/externs
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -2510,7 +2510,7 @@ Touching your source file and re-running build will result in a different warnin
 As we can see the ClojureScript used the return type information to clarify the problem.
 
 ** FAQ (for JavaScript developers)
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/guides/faq-js.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/guides/faq-js
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -2949,7 +2949,7 @@ You can suggest additional questions for this FAQ [[http://goo.gl/forms/dIAPRL9T
 In the meantime, don't hesitate to reach out to the community on StackOverflow or on the [[https://groups.google.com/forum/#!forum/clojurescript][mailing list]], people are very friendly!
 
 ** Frequently Asked Questions
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/guides/faq.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/guides/faq
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -2963,7 +2963,7 @@ In the meantime, don't hesitate to reach out to the community on StackOverflow o
 Make sure that your development classpath does not unnecessarily include test directories. ClojureScript now always recompiles child namespaces and changing a file could easily unintentionally trigger recompilation of all of your tests. Passing =:verbose true= is a simple way to check that the compiler isn't compiling more than it should.
 
 ** Guides
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/guides/guides.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/guides/guides
 :CLOJURESCRIPT_SITE_AUTHOR: Alex Miller
@@ -2992,7 +2992,7 @@ Make sure that your development classpath does not unnecessarily include test di
 -  [[file:promise-interop][Promise Interop]]
 
 ** JavaScript Modules (Alpha)
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/guides/javascript-modules.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/guides/javascript-modules
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -3274,7 +3274,7 @@ Change your =build.edn= to look like the following and rebuild:
 #+END_SRC
 
 ** Native executables
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/guides/native-executables.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/guides/native-executables
 :CLOJURESCRIPT_SITE_AUTHOR: Craig Andera
@@ -3335,7 +3335,7 @@ Use nexe to compile the js into a native exe. This will take a while the first t
 Enjoy!
 
 ** Namespaces
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/guides/ns-forms.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/guides/ns-forms
 :CLOJURESCRIPT_SITE_AUTHOR: Mike Fikes
@@ -3580,7 +3580,7 @@ Hopefully these detailed examples help clarify how =ns= desugaring, inference, a
 Making good use of these capabilities should go a long way towards easing the differences between ClojureScript and Clojure =ns= forms.
 
 ** Project Templates
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/guides/project-templates.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/guides/project-templates
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -3620,7 +3620,7 @@ Making good use of these capabilities should go a long way towards easing the di
 -  [[https://github.com/filipesilva/create-cljs-app][create-cljs-app]] Set up a modern CLJS web app by running one command.
 
 ** Promise interop
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/guides/promise-interop.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/guides/promise-interop
 :CLOJURESCRIPT_SITE_AUTHOR: Filipe Silva
@@ -3741,7 +3741,7 @@ This is just scratching the surface. =core.async= gives you very powerful queue-
 You can read more about =core-async= in the [[https://github.com/clojure/core.async][repository]], [[https://clojure.org/news/2013/06/28/clojure-clore-async-channels][rationale]], [[https://github.com/clojure/core.async/blob/master/examples/walkthrough.clj][code walkthrough]], and [[https://swannodette.github.io/2013/07/12/communicating-sequential-processes][blog post]].
 
 ** Quick Start
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/guides/quick-start.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/guides/quick-start
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -3974,7 +3974,7 @@ Let's build and run:
 When the browser launches you should momentarily see the default page which will then be quickly replaced by a =h2= tag containing =Hello React!=.
 
 ** Optional self-hosting
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/guides/self-hosting.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/guides/self-hosting
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -4048,7 +4048,7 @@ Then in your /ClojureScript/ source you can load this cache - for example that m
 This simple optimization eliminates about 2.7mb of generated JavaScript.
 
 ** ClojureScript with Webpack
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/guides/webpack.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/guides/webpack
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -4204,7 +4204,7 @@ An example =build-webworker.edn= might look like:
 
 * News
 ** [2017-06-26] Welcome to ClojureScript News!
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2017-06-26-welcome.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2017-06-26-welcome
 :CLOJURESCRIPT_SITE_AUTHOR: Alex Miller
@@ -4215,7 +4215,7 @@ An example =build-webworker.edn= might look like:
 Welcome to the new ClojureScript news area! We'll have posts available here about important releases, features, and news.
 
 ** [2017-06-27] Faster Compilation/Runtime and Spec Caching Fixes
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2017-06-27-faster-compilation-runtime-and-spec-caching-fixes.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2017-06-27-faster-compilation-runtime-and-spec-caching-fixes
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -4270,7 +4270,7 @@ You should definitely give this release a try on your code to see how it perform
 For a complete list of updates in ClojureScript 1.9.660 see [[https://github.com/clojure/clojurescript/blob/master/changes.md#19660][Changes]].
 
 ** [2017-07-07] Sneak Preview
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2017-07-07-sneak-preview.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2017-07-07-sneak-preview
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -4283,7 +4283,7 @@ ClojureScript's sixth birthday is fast approaching and will land on the second d
 Stay tuned!
 
 ** [2017-07-10] Enhanced Code Splitting {amp} Loading
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2017-07-10-code-splitting.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2017-07-10-code-splitting
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -4417,7 +4417,7 @@ In practice this means that if some function and its dependencies present in =:c
 While Google documented these capabilities in [[http://shop.oreilly.com/product/0636920001416.do][Closure: The Definitive Guide]] published in 2010, we believe they still represent the state of the art. Please give these enhancements a try in the next release!
 
 ** [2017-07-12] ClojureScript is not an Island: Integrating Node Modules
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2017-07-12-clojurescript-is-not-an-island-integrating-node-modules.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2017-07-12-clojurescript-is-not-an-island-integrating-node-modules
 :CLOJURESCRIPT_SITE_AUTHOR: António Nuno Monteiro
@@ -4497,7 +4497,7 @@ We hope you enjoy these new features as much as we do. Thanks for reading!
 [fn:4] in fact, the Reagent team is already testing [[https://reagent-project.github.io/reagent-site-npm-deps-test/][a version of their website]] to consume NPM modules. They also [[https://twitter.com/JuhoTeperi/status/885228578098601984][compared it]] to the previous version
 
 ** [2017-07-14] Checked Array Access
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2017-07-14-checked-array-access.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2017-07-14-checked-array-access
 :CLOJURESCRIPT_SITE_AUTHOR: Mike Fikes
@@ -4589,7 +4589,7 @@ to your ClojureScript [[https://clojurescript.org/reference/compiler-options][co
 By carefully using the APIs in the ClojureScript standard library as intended, this facilitates evolution of the library, both with respect to correctness and performance. This is something we can all benefit from!
 
 ** [2017-07-20] Simpler JavaScript Preprocessing
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2017-07-20-js-preprocessing-improvements.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2017-07-20-js-preprocessing-improvements
 :CLOJURESCRIPT_SITE_AUTHOR: Juho Teperi
@@ -4636,7 +4636,7 @@ We believe we are closing the gap and that the vast ecosystem of JavaScript libr
 [fn:1] There is [[https://github.com/mihaip/react-closure-compiler][third-party compiler pass]] for Closure to support JSX
 
 ** [2017-07-28] Release Candidate: 1.9.854
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2017-07-28-release-candidate.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2017-07-28-release-candidate
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -4671,7 +4671,7 @@ This feature has not yet received a post, but foreign libraries can now declare 
 Thanks to the efforts of the ClojureScript community, this release contains a large number of fixes, changes, and enhancements. For a full list [[https://github.com/clojure/clojurescript/blob/master/changes.md#19854][look here]].
 
 ** [2017-07-30] Global Exports for Foreign Libraries
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2017-07-30-global-exports.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2017-07-30-global-exports
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -4719,7 +4719,7 @@ This also provides a gradual migration path to =node_modules= if so desired. For
 We believe this feature addresses a long outstanding pain point and provides a smooth migration path to =node_modules= based dependencies. Please give it a try with ClojureScript 1.9.854 or later.
 
 ** [2017-08-16] 1.9.908 Release
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2017-08-16-release.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2017-08-16-release
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -4740,7 +4740,7 @@ We're extremely excited to see users enthusiastically giving =:npm-deps= a try e
 For a full list of enhancements, fixes, and changes [[https://github.com/clojure/clojurescript/blob/master/changes.md#19908][look here]].
 
 ** [2017-08-16] 1.9.908 Release
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2017-08-16-release.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2017-08-16-release
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -4759,7 +4759,7 @@ Besides several important fixes, a small bit of automatic configuration from the
 We're extremely excited to see users enthusiastically giving =:npm-deps= a try even at this early stage. Several limitations have been discovered and addressed, and we've even contributed patches back to Closure Compiler to push things forward. There's still a significant amount of work to do, so we encourage you to keep trying different libraries and telling us about your experiences.
 
 For a full list of enhancements, fixes, and changes [[https://github.com/clojure/clojurescript/blob/master/changes.md#19908][look here]].
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./copy]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/copy
 :CLOJURESCRIPT_SITE_AUTHOR:
@@ -4779,7 +4779,7 @@ We're extremely excited to see users enthusiastically giving =:npm-deps= a try e
 For a full list of enhancements, fixes, and changes [[https://github.com/clojure/clojurescript/blob/master/changes.md#19908][look here]].
 
 ** [2017-10-03] 1.9.946 Release
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2017-10-03-release.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2017-10-03-release
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -4792,7 +4792,7 @@ This release contains many bug fixes and addresses feedback from the 1.9.908 rel
 For a full list of enhancements, fixes, and changes [[https://github.com/clojure/clojurescript/blob/master/changes.md#19946][look here]].
 
 ** [2018-03-26] ClojureScript Command Line
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2018-03-26-clojurescript-command-line.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2018-03-26-clojurescript-command-line
 :CLOJURESCRIPT_SITE_AUTHOR: Mike Fikes
@@ -5064,7 +5064,7 @@ You can specify EDN directly on the command line, as shown above, or you can sup
 We hope you find the new =cljs.main= feature useful and that it simplifies many of the common tasks you need to accomplish with the ClojureScript compiler!
 
 ** [2018-03-26] 1.10.238 Release
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2018-03-26-release.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2018-03-26-release
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -5221,7 +5221,7 @@ Thanks to all of the community members who contributed to ClojureScript 1.10.238
 -  Tom Mulvaney
 
 ** [2018-03-28] Shared AOT Cache
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2018-03-28-shared-aot-cache.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2018-03-28-shared-aot-cache
 :CLOJURESCRIPT_SITE_AUTHOR: Mike Fikes
@@ -5260,7 +5260,7 @@ Since this strategy doesn't depend on AOT artifacts being included in shipping J
 We encourage you to give this feature a try. Our hope is that this feature is one that you don't end up even thinking about, and that it just further helps get you to your day-to-day development!
 
 ** [2018-06-15] 1.10.312 Release
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2018-06-15-release.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2018-06-15-release
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -5310,7 +5310,7 @@ Thanks to all of the community members who contributed to ClojureScript 1.10.312
 -  Roman Scherer
 
 ** [2018-11-02] 1.10.439 Release
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2018-11-02-release.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2018-11-02-release
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -5491,7 +5491,7 @@ For details see
 -  [[https://www.clojuriststogether.org/news/may-2018-monthly-update/][May 2018 Monthly Update]]
 
 ** [2019-01-31] 1.10.516 Release
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2019-01-31-release.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2019-01-31-release
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -5663,7 +5663,7 @@ Thanks to all of the community members who contributed to ClojureScript 1.10.516
 -  Will Acton
 
 ** [2019-11-18] 1.10.597 Release
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2019-11-18-release.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2019-11-18-release
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -5816,7 +5816,7 @@ Thanks to all of the community members who contributed to ClojureScript 1.10.597
 -  Thomas Mulvaney
 
 ** [2020-04-24] Embracing JavaScript Tools
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2020-04-24-bundle-target.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2020-04-24-bundle-target
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -5845,7 +5845,7 @@ This feature is the result of many discussions and inspiration from some great p
 Happy hacking!
 
 ** [2020-04-24] 1.10.741 Release
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2020-04-24-release.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2020-04-24-release
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -5940,7 +5940,7 @@ Thanks to all of the community members who contributed to ClojureScript 1.10.741
 -  Roman Liutikov
 
 ** [2021-04-06] 1.10.844 Release
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2021-04-06-release.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2021-04-06-release
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -6042,7 +6042,7 @@ Thanks to all of the community members who contributed to ClojureScript 1.10.844
 -  Thomas Heller
 
 ** [2021-05-24] 1.10.866 Release
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2021-05-24-release.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2021-05-24-release
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -6112,7 +6112,7 @@ Thanks to all of the community members who contributed to ClojureScript 1.10.866
 -  Wilker Lúcio
 
 ** [2021-11-04] 1.10.891 Release
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2021-11-04-release.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2021-11-04-release
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -6161,7 +6161,7 @@ Thanks to all of the community members who contributed to ClojureScript 1.10.891
 -  Chance Russell
 
 * Privacy
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/privacy.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/privacy
 :CLOJURESCRIPT_SITE_AUTHOR: Rich Hickey
@@ -6259,7 +6259,7 @@ Durham, NC 27701
 USA
 * Reference
 ** Advanced Compilation
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/reference/advanced-compilation.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/reference/advanced-compilation
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -6349,7 +6349,7 @@ Change your production build to use two additional options =:pseudo-names true= 
 For more information about the specifics of =:foreign-libs= compiler option syntax consult [[file:dependencies]].
 
 ** Bootstrapping the Compiler
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/reference/bootstrapping.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/reference/bootstrapping
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -6408,7 +6408,7 @@ The following enumerates the remaining tasks:
 As a point of reference, [[https://github.com/kanaka/clojurescript]] is a previous project to bootstrap the ClojureScript compiler. It is fairly dated since it was forked from the main tree on Nov 16th, 2012, however, it was self-hosting and allowed for a fully browser-based REPL (original version of [[http://clojurescript.net/]]). A presentation of the project from Clojure West 2013 is here: [[http://www.infoq.com/presentations/cljs-in-cljs]]
 
 ** Compiler Options
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/reference/compiler-options.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/reference/compiler-options
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -7271,7 +7271,7 @@ Is a function that will be called after a successful build.
 #+END_SRC
 
 ** Dependencies
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/reference/dependencies.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/reference/dependencies
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -7575,7 +7575,7 @@ Now, we can run the build. Simply reference the JAR as below:
 Load up your browser, and you'll see a helpful validation error from Schema in your JavaScript console. Change the =:c= key to an integer value and rebuild if you'd like to see this error go away.
 
 ** Documentation
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/reference/documentation.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/reference/documentation
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -7619,7 +7619,7 @@ Load up your browser, and you'll see a helpful validation error from Schema in y
 -  [[file:javascript-api][JS API]]
 
 ** Google Closure Library
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/reference/google-closure-library.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/reference/google-closure-library
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -7744,7 +7744,7 @@ Or you can search Google Closure Library on Github for keywords pertaining to a 
 #+END_EXAMPLE
 
 ** JavaScript API
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/reference/javascript-api.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/reference/javascript-api
 :CLOJURESCRIPT_SITE_AUTHOR: Mike Fikes
@@ -7811,7 +7811,7 @@ Gets the last index of a value in a sequential collection, or =-1= if not found.
 #+END_SRC
 
 ** JavaScript Library Preprocessing
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/reference/javascript-library-preprocessing.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/reference/javascript-library-preprocessing
 :CLOJURESCRIPT_SITE_AUTHOR: Maria Geller
@@ -7846,7 +7846,7 @@ ClojureScript allows you to add a custom transformation step for JavaScript libr
 The example above uses Babel to transform the JavaScript code by loading a minified version of [[https://github.com/Daniel15/babel-standalone][babel-standalone]] using Nashorn. The =js-transforms= method gets and returns an object which satisfies the =IJavaScript= protocol. The object can be a plain map or a record with keys like =:url=, =:provides=, =:requires= and =:source=. The second argument which is passed to =js-transforms= is a map with the compiler options. The JavaScript preprocessing happens before [[file:xref/../javascript-module-support][module conversion]], however, both steps are independent of each other and can be used in disjunction.
 
 ** JavaScript Module Support (Alpha)
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/reference/javascript-module-support.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/reference/javascript-module-support
 :CLOJURESCRIPT_SITE_AUTHOR: Maria Geller
@@ -7919,7 +7919,7 @@ If your JavaScript module depends on other modules you need to add those modules
 The [[https://nodejs.org/api/modules.html][Node.js module specification]] varies slightly from the [[http://wiki.commonjs.org/wiki/Modules/1.1#Module_Identifiers][CommonJS specification]] in that the module identifier that is passed to =require()= doesn't always need to be an absolute or relative path. This makes it difficult for the Google Closure compiler to resolve the dependencies of a node module since the compiler was implemented following the standard CommonJS specification. Therefore, it might not be possible for a node module to be converted to a Google Closure module.
 
 ** Packaging Foreign Dependencies
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/reference/packaging-foreign-deps.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/reference/packaging-foreign-deps
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -7977,7 +7977,7 @@ If your foreign library has dependencies then you must enumerate them in a =:req
 #+END_SRC
 
 ** The REPL and main entry points
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/reference/repl-and-main.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/reference/repl-and-main
 :CLOJURESCRIPT_SITE_AUTHOR: ClojureScript Team
@@ -8186,7 +8186,7 @@ To compile ClojureScript source code, pass the main namespace to =cljs.main= via
 The output will be written to the directory specified via the =-d= option (or =out= if unspecified), or to the file specified via the =-o= option.
 
 ** REPL Options
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/reference/repl-options.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/reference/repl-options
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -8328,7 +8328,7 @@ Here is an example enabling and using the ECMAScript Internationalization API:
 #+END_EXAMPLE
 
 ** REPL and Evaluation
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/reference/repl.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/reference/repl
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -8527,7 +8527,7 @@ When the REPL compiles a namespace form, it will check for required namespaces a
 Note: conveying the :libs option to the REPL so that it can find third-party JavaScript libraries has not yet been implemented.
 
 ** Source maps
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/reference/source-maps.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/reference/source-maps
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -8585,7 +8585,7 @@ All source files will get copied into =:output-dir= so that they can be resolved
 
 * Tools
 ** Atom
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/tools/atom.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/tools/atom
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -8694,7 +8694,7 @@ If you don't want to type the command to start Figwheel every time, you can save
 More documentation on extending Proto REPL can be found here: [[https://github.com/jasongilman/proto-repl/blob/master/extending_proto_repl.md]]
 
 ** Cursive
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/tools/cursive.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/tools/cursive
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -8705,7 +8705,7 @@ More documentation on extending Proto REPL can be found here: [[https://github.c
 [[https://cursive-ide.com][Cursive]] is a plugin for IntelliJ that offers syntax highlighting, structural editing and navigation (paredit), code indexing / symbol lookup, refactoring, debugging, and static analysis / arity warnings. In addition, it includes an integrated REPL environment.
 
 ** Emacs and Inferior Clojure Interaction Mode
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/tools/emacs-inf.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/tools/emacs-inf
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -8729,7 +8729,7 @@ Open your ClojureScript file and run =M-x cljs-node-repl=. You'll get a new buff
 inf-clojure-minor-mode=. =C-c C-l= will load the file. =C-c Meta-n= will switch your namespace. If you place your cursor at the end of a s-expression, =C-x C-e= will evaluate that expression. =C-c C-v= will show the docs. =C-c C-s= will show the source. =C-c <return>= will macroexpand. Refer to [[https://github.com/clojure-emacs/inf-clojure][inf-clojure]] for more documentation.
 
 ** Leiningen
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/tools/leiningen.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/tools/leiningen
 :CLOJURESCRIPT_SITE_AUTHOR: Denis Baudinot
@@ -8744,7 +8744,7 @@ inf-clojure-minor-mode=. =C-c C-l= will load the file. =C-c Meta-n= will switch 
 [[https://github.com/emezeske/lein-cljsbuild][lein-cljsbuild]] provides ClojureScript compilation and file watching. For a more feature rich experience with browser hot reloading and CSS support head to [[https://github.com/bhauman/lein-figwheel][lein-figwheel]].
 
 ** Light Table
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/tools/light-table.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/tools/light-table
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -8759,7 +8759,7 @@ To get started, check out this concise [[http://docs.lighttable.com/#start][intr
 Once you feel comfortable navigating Light Table's interface and using basic commands, it is advisable to install the official Paredit plugin. You can do so via the integrated plugin manager: open the command bar and look for =Plugins: Show plugin manager=.
 
 ** shadow-cljs
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/tools/shadow-cljs.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/tools/shadow-cljs
 :CLOJURESCRIPT_SITE_AUTHOR: Denis Baudinot
@@ -8776,7 +8776,7 @@ From the shadow-cljs [[https://shadow-cljs.github.io/docs/UsersGuide.html][user 
 #+END_QUOTE
 
 ** Sublime Text 2
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/tools/sublime.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/tools/sublime
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -8789,7 +8789,7 @@ Install Sublime Text 2, install Sublime Text Package Control, use that to instal
 We recommend installing [[https://github.com/odyssomay/paredit][paredit]], [[https://github.com/odyssomay/sublime-lispindent][lispindent]], and [[http://github.com/wuub/SublimeREPL][SublimeREPL]] which ships with support for ClojureScript.
 
 ** Testing
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/tools/testing.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/tools/testing
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -8935,7 +8935,7 @@ Often it's useful to be able to run some code after all tests have completed suc
 #+END_SRC
 
 ** Tools
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/tools/tools.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/tools/tools
 :CLOJURESCRIPT_SITE_AUTHOR: Alex Miller
@@ -8973,7 +8973,7 @@ Often it's useful to be able to run some code after all tests have completed suc
 -  [[https://github.com/bhauman/lein-figwheel][lein-figwheel]]
 
 ** Vim
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/tools/vim.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/tools/vim
 :CLOJURESCRIPT_SITE_AUTHOR: David Nolen
@@ -9037,7 +9037,7 @@ In =src/clj/myapp/repl.clj=:
 -  Press =cc= in each, selecting the right TMux session when prompted
 
 ** Visual Studio Code
-:PROPEPTIES:
+:PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/tools/vscode.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/tools/vscode
 :CLOJURESCRIPT_SITE_AUTHOR: Denis Baudinot
