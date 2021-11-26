@@ -3121,24 +3121,61 @@ exercise, but let's do it anyway. Most of the syntax enhancements newer
 ECMAScript versions bring, Clojure provides. The following table lists
 recent ECMAScript features and their ClojureScript equivalent.
 
-| ECMAScript                           | ClojureScript                                                                                                                                                                                                                                           |
-|--------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Arrows                               | Clojure function expressions are already quite concise, and expression-based (compare ~(fn [x y] (+ x y))~ to ~function (x, y){return x + y;}~). In addition, there is an even more lightweight function syntax (~#(+ %1 %2)~).                               |
-| Classes                              | ClojureScript is not class-based [[https://clojure.org/datatypes#toc5][by design]]; use data types and protocols to get the good parts of Object-Orientation. See [[why-are-there-no-classes-][next section]] for more details.                                                                                                |
-| Template Strings                     | ClojureScript strings are multi-line, and the absence of commas makes using the ~str~ function for concatenation very natural; you can also use C-style format from the Google Closure library.                                                           |
-| Destructuring                        | Available, also supports nesting and function parameters.                                                                                                                                                                                               |
-| Default and rest arguments           | Fully supported                                                                                                                                                                                                                                         |
-| Let and const                        | these are the exact semantics of ClojureScript's ~let~.                                                                                                                                                                                                   |
-| Iterators and For..Of                | Seq abstraction, which is implemented by all default collections.                                                                                                                                                                                       |
-| Generators                           | Lazy seqs                                                                                                                                                                                                                                               |
-| Sets and Maps                        | part of the standard library (as persistent data structures), allow for arbitrary keys.                                                                                                                                                                 |
-| Proxies                              | Not relevant                                                                                                                                                                                                                                            |
-| Symbols                              | By design, ClojureScript is against information hiding, so no private members. Keywords can be namespaced, reducing the potential for conflict in map keys. Protocols let you extend the behaviour of existing data types without new visible members.  |
-| Math + Number + String + Object APIs | Similar functionality in both the standard library and the Google Closure library.                                                                                                                                                                      |
-| Number literals                      | there are literals for any base, with special syntax for octal and hexadecimal (and of course decimal)                                                                                                                                                  |
-| Promises                             | Available via libraries                                                                                                                                                                                                                                 |
-| Reflect API                          | Not relevant                                                                                                                                                                                                                                            |
-| Tail Calls                           | partially supported via the explicit ~recur~ construct.                                                                                                                                                                                                   |
+| ECMAScript            | ClojureScript                                          |
+|-----------------------+--------------------------------------------------------|
+| Arrows                | Clojure function expressions are already quite         |
+|                       | concise, and expression-based (compare                 |
+|                       | ~(fn [x y] (+ x y))~ to ~function (x, y){return x + y;}~). |
+|                       | In addition, there is an even more lightweight         |
+|                       | function syntax (~#(+ %1 %2)~).                          |
+|-----------------------+--------------------------------------------------------|
+| Classes               | ClojureScript is not class-based [[https://clojure.org/datatypes#toc5][by design]];            |
+|                       | use data types and protocols to get the good           |
+|                       | parts of Object-Orientation.                           |
+|                       | See [[why-are-there-no-classes-][next section]] for more details.                     |
+|-----------------------+--------------------------------------------------------|
+| Template Strings      | ClojureScript strings are multi-line, and the          |
+|                       | absence of commas makes using the ~str~ function         |
+|                       | for concatenation very natural; you can also           |
+|                       | use C-style format from the Google Closure library.    |
+|-----------------------+--------------------------------------------------------|
+| Destructuring         | Available, also supports nesting and                   |
+|                       | function parameters.                                   |
+|-----------------------+--------------------------------------------------------|
+| Default and rest      | Fully supported                                        |
+| arguments             |                                                        |
+|-----------------------+--------------------------------------------------------|
+| Let and const         | these are the exact semantics of ClojureScript's ~let~.  |
+|-----------------------+--------------------------------------------------------|
+| Iterators and For..Of | Seq abstraction, which is implemented by all default   |
+|                       | collections.                                           |
+|-----------------------+--------------------------------------------------------|
+| Generators            | Lazy seqs                                              |
+|-----------------------+--------------------------------------------------------|
+| Sets and Maps         | part of the standard library (as persistent data       |
+|                       | structures), allow for arbitrary keys.                 |
+|-----------------------+--------------------------------------------------------|
+| Proxies               | Not relevant                                           |
+|-----------------------+--------------------------------------------------------|
+| Symbols               | By design, ClojureScript is against information        |
+|                       | hiding, so no private members. Keywords can be         |
+|                       | namespaced, reducing the potential for conflict        |
+|                       | in map keys. Protocols let you extend the              |
+|                       | behaviour of existing data types without new           |
+|                       | visible members.                                       |
+|-----------------------+--------------------------------------------------------|
+| Math + Number +       | Similar functionality in both the standard             |
+| String + Object APIs  | library and the Google Closure library.                |
+|-----------------------+--------------------------------------------------------|
+| Number literals       | there are literals for any base, with special          |
+|                       | syntax for octal and hexadecimal (and of               |
+|                       | course decimal)                                        |
+|-----------------------+--------------------------------------------------------|
+| Promises              | Available via libraries                                |
+|-----------------------+--------------------------------------------------------|
+| Reflect API           | Not relevant                                           |
+|-----------------------+--------------------------------------------------------|
+| Tail Calls            | partially supported via the explicit ~recur~ construct.  |
 
 *[[why-are-there-no-classes][Why are there no classes ?]]*
 
