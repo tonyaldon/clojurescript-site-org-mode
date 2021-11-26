@@ -1,4 +1,4 @@
-#+TITLE: Clojure website in org-mode
+#+TITLE: ClojureScript website in org-mode
 #+AUTHOR: Tony aldon
 #+DATE: <2021-11-25 Thu>
 
@@ -13,22 +13,40 @@ have to clone some other repositories.  See [[* Installation][Installation]] sec
 
 You might be interested in [[https://github.com/tonyaldon/clojure-site-org-mode][clojure-site-org-mode]].
 
-Note that the development of https://clojure.org/ happens in the
+Note that the development of https://clojurescript.org/ happens in the
 Github repository https://github.com/clojure/clojurescript-site.
 
 * Installation
 
 The documentation is in the file [[./clojurescript-site.org]].
 
-* Converting clojure-site to one org file
-** Steps I followed to convert the asciidoc files into a single org file
+Some links are images in the directory [[./assets/]].  So if you want
+those links to work correctly it is better to clone the whole
+project.
 
-I describe here the steps I followed to convert the 248 asciidoc files
-constituing the Clojure documentation into a single org file.
+Each section in ~clojurescript-site.org~ that corresponds to an asciidoc
+file in [[https://github.com/clojure/clojurescript-site][clojurescript-site]] has a (local) link to this file.  So if you
+want to refer to the original files, you need to clone
+~clojurescript-site~ repository.
 
-If I had to do it again I would maybe do it differently.
+To install everything run these following commands:
 
-Anyway here the description.
+#+BEGIN_SRC bash
+git clone https://github.com/tonyaldon/clojurescript-site-org-mode.git
+cd clojurescript-site-org-mode
+git clone https://github.com/clojure/clojurescript-site.git
+#+END_SRC
+
+* Converting clojurescript-site to one org file
+
+I describe here the steps I followed to convert the asciidoc files
+constituing the ClojureScript documentation into a single org file.
+
+As It was the second time I did it (I did it first with the Clojure
+documentation -> [[https://github.com/tonyaldon/clojure-site-org-mode][clojure-site-org-mode]]), I didn't have to discovered
+everything.  And so, I tried to make the process more reproducible,
+more automatic and less manual/interactive (knowing that there is
+still parts that could/should be automated).
 
 To do the conversion I've used:
 - ~assciidoctor~, ~pandoc~, ~fd~, ~sed~,
@@ -38,13 +56,16 @@ To do the conversion I've used:
   ~query-replace-regexp~, ~iedit~, ~multiple-cursors~, keyboard macros,
 - manual proofreading and adjustment.
 
-First I cloned ~clojure-site~ repository:
+First I cloned ~clojurescript-site~ repository:
 
 #+BEGIN_SRC bash
 git clone https://github.com/clojure/clojurescript-site.git
 #+END_SRC
 
-*** 01) asciidoc -> docbook -> org
+** 01) asciidoc -> docbook -> org
+
+Then I converted all the ~asciidoc~ files of ~clojurescript-site~ into one
+single org file running the following ~bash~ snippet:
 
 #+BEGIN_SRC bash :results output
 for f in `fd --no-ignore .adoc ./clojurescript-site/`; do
@@ -68,3 +89,154 @@ done
 
 rm tmpdocbook tmporg tmpfile ;
 #+END_SRC
+
+Let's break down the previous snippet:
+1) use ~fd~ to list the ~.adoc~ files,
+2) loop on that list,
+3) use ~asciidoctor~ to convert each ~.adoc~ file into temporary ~docbook~
+   file,
+4) use ~pandoc~ to convert each ~docbook~ file into temporary ~org~ file,
+5) multiple use of ~sed~ and ~printf~ to
+   - collect the fontmatter of the ~.adoc~ files,
+   - format the data into ~org~ properties,
+   - store it in a temporary file,
+6) append the temporary files to ~clojurescript-site.org~.
+
+At this point, each section of the new created file
+~clojurescript-site.org~ corresponds to an ~asciidoc~ file in the
+ClojureScript documentation.
+
+** 02) Tree structure
+
+Then I manually made the tree structure:
+1) I removed the unused sections: "Page Not Found", "README", "Search
+   Results",
+2) I added the top sections: "About", "Community", "Guide", "News",
+   "Reference", "Tools",
+3) I added dates to the headlines of the subsection of the "News"
+   section,
+4) I added the pagination and reordered the section "About".
+
+I also removed the unused ~CUSTOM_ID~ org properties added by ~pandoc~.
+
+** 03) Org list
+
+Then, in ~clojurescript-site.org~, I removed empty lines in list that
+was added by ~pandoc~:
+
+#+BEGIN_SRC emacs-lisp
+;; remove empty lines in list
+(while (re-search-forward "^ *\\(-\\|[1-9]+\\.\\) " nil t)
+  (when (org-match-line (org-item-re))
+    (save-excursion
+      (forward-line -1)
+      (when (and (org-in-item-p) (= (point-at-bol) (point-at-eol)))
+        (delete-char 1)))))
+#+END_SRC
+
+Then in ~clojurescript-site.org~, I replaced list items with 2 spaces
+after the dash ~-~ (added by ~pandoc~), with only one space:
+
+#+BEGIN_SRC emacs-lisp
+;; replace list with "-  " (2 spaces) with "- " (1 space)
+;; this step must be done before (hard) wrapping lines
+(while (re-search-forward "^ *\\(- \\) " nil t)
+  (when (save-match-data (org-match-line (org-item-re)))
+    (let* ((indentation (save-match-data
+                          (goto-char (match-beginning 0))
+                          (current-indentation)))
+           (new-indentation (* (/ indentation 3) 2)))
+      (replace-match "\\1" nil nil)
+      (indent-line-to new-indentation))))
+#+END_SRC
+
+** 04) Source Blocks
+
+In ~clojurescript-site.org~, I removed the left padding in every blocks
+that has been added by ~pandoc~ when converting from ~docbook~ to ~org~:
+
+#+BEGIN_SRC emacs-lisp
+;; remove left padding in org blocks
+;; Warning: this loop doesn't take care of line starting by a *
+;; after removing the left padding lp which make the line become
+;; a headline in org.
+(while (re-search-forward org-block-regexp nil t)
+  (let ((beg (match-beginning 0))
+        (end-line (save-excursion (goto-char (match-end 0)) (line-number-at-pos))))
+    (goto-char beg)
+    (if-let* ((lp (progn (forward-line) (current-indentation)))
+              ((not (zerop lp))))
+        (while (< (line-number-at-pos) end-line)
+          (unless (= (point-at-bol) (point-at-eol))
+            (delete-char lp))
+          (forward-line)))))
+#+END_SRC
+
+** 05) Wrap lines
+
+I interactively (hard) wrapped the lines at 72 characters.
+
+** 06) Markers
+
+Then, I replaced inline verbatim markers ~=~ by code markers ~~~ in
+~clojurescript-site.org~.
+
+#+BEGIN_SRC emacs-lisp
+;; replace inline code markers = by ~
+(while (re-search-forward "=" nil t)
+  (backward-char 1)
+  (if-let ((inline-code (cadr (org-element-code-parser))))
+      (progn
+        (goto-char (plist-get inline-code :begin))
+        (delete-char 1)
+        (insert "~")
+        (goto-char (- (plist-get inline-code :end)
+                      (plist-get inline-code :post-blank)))
+        (delete-char -1)
+        (insert "~"))
+    (forward-char 1)))
+#+END_SRC
+
+Then, I interactively removed ~=~ verbatim markers when inside links
+(like this ~[[link][=verbatim=]]~).  Org markers don't nest inside org
+links.  We keep the links because they are more meaningful than the
+markers.
+
+Then, I interactively replaced nested emphasis markers like this
+~/*set!*/~ by ~*set!*~ as Org emphasis markers don't nest.
+
+** 07) Breaklines and escaped character
+
+Then, I interactively removed ~\\~ breaklines and removed unnecessary
+use of escaped character ~\~.
+
+** 08) Footnotes
+
+Then I made footnotes unique.  As they came from different files in
+the ClojureScript documentation they were conflicting in
+~clojurescript-site.org~ org file.  For instance, the footnotes ~[fn:1]~
+used to refer to two different footnotes have been renamed uniquely as
+~[fn:closure_lib]~ and ~[fn:closure_comp]~.
+
+** 09) Faq
+
+Then I converted faq's questions into headlines.
+
+** 10) Example block and source block
+
+Then I replaced org example blocks (~#+BEGIN_EXAMPLE ... #+END_EXAMPLE~)
+with specific source code blocks (~#+BEGIN_SRC ... #+END_SRC~) when
+appropiated:
+- ~#+BEGIN_EXAMPLE~ -> ~#+BEGIN_SRC clojure~ (for Clojure snippets),
+- ~#+BEGIN_EXAMPLE~ -> ~#+BEGIN_SRC js~ (for Javascript snippets),
+- ~#+BEGIN_EXAMPLE~ -> ~#+BEGIN_SRC sh~ (for command lines snippets),
+- ~#+BEGIN_EXAMPLE~ -> ~#+BEGIN_SRC html~ (for HTML snippets).
+
+** 12) Internal links and images
+
+I interactively set the internal links using ~CUSTOM_ID~ org
+property of nodes to be sure to have unicity of links (which might
+not be the case using headlines content) and anchors in a few cases.
+
+Then I added the ~assets~ directory of Clojure documentation (containing
+the images) in the project and modified the link to the images.
