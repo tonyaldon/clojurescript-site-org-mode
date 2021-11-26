@@ -1639,15 +1639,15 @@ two lines are necessary boilerplate metadata attributes.
 
 *** Text markup
 
-| markup                  | effect            |
-|-------------------------+-------------------|
-| \_italic\_              | /italic/            |
-| *bold*                    | *bold*              |
-| \_**italic and bold**\_ | /*italic and bold*/ |
-| `inline code`           | ~inline code~       |
-| (C) (R) (TM)            | © ® ™             |
-| -- ...                  |  --- ...​          |
-| -> simpara>             | → ← ⇒ ⇐           |
+| markup                | effect          |
+|-----------------------+-----------------|
+| ~_italic_~              | /italic/          |
+| ~*bold*~                | *bold*            |
+| ~_**italic and bold**_~ | italic and bold |
+| ~`inline code`~         | ~inline code~     |
+| ~(C) (R) (TM)~          | © ® ™           |
+| ~-- ...~                | — ...​           |
+| ~-> <- => <=~           | → ← ⇒ ⇐         |
 
 To get a line break without a paragraph change, append + to the end of
 the line:
