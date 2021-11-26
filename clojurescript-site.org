@@ -1656,9 +1656,6 @@ force +
 line break
 #+END_EXAMPLE
 
-force
-line break
-
 If you have many lines in a row that will need breaks you can prefix
 them with [%hardbreaks]:
 
@@ -1668,17 +1665,12 @@ first line
 second line
 #+END_EXAMPLE
 
-first line
-second line
-
 There are a number of ways to handle escaping in Asciidoc but one of the
 most helpful is to omit all formatting by using:
 
 #+BEGIN_EXAMPLE
 pass:[*ns*]
 #+END_EXAMPLE
-
-*ns*
 
 *** Links
 
@@ -1694,8 +1686,6 @@ is required in our generator!):
 #+BEGIN_EXAMPLE
 <<resources#,Resources>>
 #+END_EXAMPLE
-
-[[file:resources][Resources]]
 
 There is a bug in the parser used in the current version of JBake for
 links to a page in a parent directory. For example, to link to a page at
@@ -1717,15 +1707,11 @@ Link to an anchor in an internal page:
 <<resources#books,Books>>
 #+END_EXAMPLE
 
-[[file:resources#books][Books]]
-
 Link to an external page:
 
 #+BEGIN_EXAMPLE
 https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn]
 #+END_EXAMPLE
-
-[[https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn][defn]]
 
 *** Images
 
@@ -1737,8 +1723,6 @@ Reference the image in a page as follows:
 #+BEGIN_EXAMPLE
 image::/images/content/reference/transducers/xf.png[Nested transformations]
 #+END_EXAMPLE
-
-[[/images/content/reference/transducers/xf.png]]
 
 *** Code blocks
 
@@ -1773,11 +1757,6 @@ Bulleted lists:
 ,*** more nested
 #+END_EXAMPLE
 
-- first
-- second
-  - nested
-    - more nested
-
 Ordered lists:
 
 #+BEGIN_EXAMPLE
@@ -1786,11 +1765,6 @@ Ordered lists:
 .. b.1
 ... b.1.a
 #+END_EXAMPLE
-
-1. a
-2. b
-   1. b.1
-      1. b.1.a
 
 Mixed lists:
 
@@ -1802,13 +1776,6 @@ Mixed lists:
 . b.1
 . b.2
 #+END_EXAMPLE
-
-- a
-   1. a.1
-   2. a.2
-- b
-   1. b.1
-   2. b.2
 
 Use the line break advice from the text formatting section to create
 lists with multi-line items.
@@ -1826,11 +1793,6 @@ options. This is a basic table example however:
 | b | c
 |===
 #+END_EXAMPLE
-
-| col1 | col2 |
-|------+------|
-| a    | b    |
-| b    | c    |
 
 *** Other
 
