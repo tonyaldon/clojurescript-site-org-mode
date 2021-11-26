@@ -757,8 +757,8 @@ extended to any data structure that can provide a sequential interface
 to its contents. All of the Clojure data structures can provide
 seqs. Seqs can be used like iterators or generators in other
 languages, with the significant advantage that seqs are immutable and
-persistent. Seqs are extremely simple, providing a */first/* function,
-which return the first item in the sequence, and a */rest/* function
+persistent. Seqs are extremely simple, providing a *first* function,
+which return the first item in the sequence, and a *rest* function
 which returns the rest of the sequence, which is itself either a seq
 or nil.
 
@@ -1245,7 +1245,7 @@ tickets, builds, patches, source, and more. If you'd like to submit a
 patch, please follow these guidelines on the [[https://clojure.org/community/workflow][preferred process for
 submitting]].
 
-/*Many thanks for your contributions to ClojureScript!*/
+*Many thanks for your contributions to ClojureScript!*
 
 ** Contributing to This Site
 :PROPERTIES:
@@ -3025,7 +3025,7 @@ in a matter of hours, so we're glad we have them.
 *[[ill-never-get-used-to-the-syntax][I'll never get used to the syntax!]]*
 
 Indeed, transitioning from JavaScript syntax to Clojure syntax is
-*/daunting/*:
+*daunting*:
 
 JavaScript:
 
