@@ -4485,7 +4485,7 @@ java -cp "cljs.jar;src" cljs.main --compile hello-world.core --repl
 Your default web browser will open to a page that looks like the
 following:
 
-[[/images/content/guides/quick-start/browser.png]]
+[[./assets/images/content/guides/quick-start/browser.png]]
 
 If you are running Linux and the REPL does not start, try disabling
 browser auto-launch and opening ~http://localhost:9000~ manually:
@@ -5987,7 +5987,7 @@ java -cp cljs.jar cljs.main
 When you do this, the REPL will start and will automatically launch a
 browser to connect back to it.
 
-[[/images/content/news/2018-03-26-clojurescript-command-line/browser.png]]
+[[./assets/images/content/news/2018-03-26-clojurescript-command-line/browser.png]]
 
 You will see the following in the REPL terminal:
 
@@ -6059,7 +6059,7 @@ Note that we are also adding our ~src~ directory to the classpath.
 
 When this launches, you should see a blue circle in your browser.
 
-[[/images/content/news/2018-03-26-clojurescript-command-line/blue-circle.png]]
+[[./assets/images/content/news/2018-03-26-clojurescript-command-line/blue-circle.png]]
 
 Try interacting with the app by drawing other circles. For example, try
 this in the REPL:
@@ -6068,7 +6068,7 @@ this in the REPL:
 (my-app.core/draw-shape 350 200 50 "red")
 #+END_SRC
 
-[[/images/content/news/2018-03-26-clojurescript-command-line/blue-red-circle.png]]
+[[./assets/images/content/news/2018-03-26-clojurescript-command-line/blue-red-circle.png]]
 
 What if you change your source? Change the ~2~ to a ~1~ in the
 ~draw-shape~ implementation, and refresh your browser. Now instead of
