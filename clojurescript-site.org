@@ -831,7 +831,7 @@ For situations where mutual recursion is called for, recur can't be
 used. Instead, [[http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/trampoline][trampoline]] may be a good option.
 
 * Community
-** Books {amp} Videos
+** Books & Videos
 :PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/community/books.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/community/books
@@ -1772,10 +1772,10 @@ are shown here:
 Bulleted lists:
 
 #+BEGIN_EXAMPLE
-* first
-* second
-** nested
-*** more nested
+,* first
+,* second
+,** nested
+,*** more nested
 #+END_EXAMPLE
 
 - first
@@ -5136,7 +5136,7 @@ features slated for the next release.
 
 Stay tuned!
 
-** [2017-07-10] Enhanced Code Splitting {amp} Loading
+** [2017-07-10] Enhanced Code Splitting & Loading
 :PROPERTIES:
 :CLOJURESCRIPT_SITE_FILE: [[./clojurescript-site/content/news/2017-07-10-code-splitting.adoc]]
 :CLOJURESCRIPT_SITE_PAGE: https://clojurescript.org/news/2017-07-10-code-splitting
