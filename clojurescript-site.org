@@ -116,7 +116,7 @@ The rationale for ClojureScript is much the same as for Clojure, with
 JavaScript in the role of platform, and additional emphasis on the reach
 of JS, as it is obviously not as rich a platform.
 
-A [[file:rationale][deeper discussion on ClojureScript's rationale]] can be found elsewhere
+A [[#content/about/rationale][deeper discussion on ClojureScript's rationale]] can be found elsewhere
 on this site.
 
 *** State and Identity
@@ -128,7 +128,7 @@ than mutable state, even in single threaded environments.
 
 As with Clojure, ClojureScript supports REPL-driven development,
 providing easily-launched REPLs for various JavaScript environments. See
-[[file:xref/../../guides/quick-start][Quick Start]] for details.
+[[#content/guides/quick-start][Quick Start]] for details.
 
 Additionally, ClojureScript's self-hosting capability supports extending
 the dynamic nature to pure JavaScript environments where third-party
@@ -168,12 +168,12 @@ single-threaded environments.
 
 - ClojureScript is hosted on JavaScript VMs
 - Optionally, it may use Google's Closure compiler for optimization
-- It is [[file:closure][designed to leverage Google's Closure library]], and participates
+- It is [[#content/about/closure][designed to leverage Google's Closure library]], and participates
   in its dependency/require/provide mechanism
 
 *** Getting Started
 
-See [[file:xref/../../guides/quick-start][Quick Start]]
+See [[#content/guides/quick-start][Quick Start]]
 
 *** The Reader
 
@@ -197,7 +197,7 @@ See [[file:xref/../../guides/quick-start][Quick Start]]
 
 *** The REPL and main
 
-- See the [[file:xref/../../guides/quick-start][Quick Start]] for ClojureScript REPL usage.
+- See the [[#content/guides/quick-start][Quick Start]] for ClojureScript REPL usage.
 - The standard ClojureScript REPLs support the Clojure main pattern.
 
 *** Evaluation
@@ -208,6 +208,9 @@ See [[file:xref/../../guides/quick-start][Quick Start]]
 - While Clojure performs locals clearing, ClojureScript does not
 
 *** Special Forms
+:PROPERTIES:
+:CUSTOM_ID: content/about/differences#special-forms
+:END:
 
 The following ClojureScript special forms are identical to their Clojure
 cousins: ~if~, ~do~, ~let~, ~letfn~, ~quote~, ~loop~, ~recur~, ~throw~, and ~try~.
@@ -442,7 +445,7 @@ its ~cljs.js/*load-fn*~ capability.
   - Clojure can represent unbound vars. In ClojureScript ~(def x)~
     results in ~(nil? x)~ being true.
   - In Clojure, ~def~ yields the /var itself/. In ClojureScript ~def~
-    yields the /value/, unless the REPL option [[file:xref/../../../reference/repl-options#def-emits-var][:def-emits-var]]
+    yields the /value/, unless the REPL option [[#content/reference/repl-options#def-emits-var][:def-emits-var]]
     is set (this defaults to ~true~ for REPLs).
 - Atoms work as in Clojure
 - Refs and Agents are not currently implemented
@@ -644,7 +647,7 @@ functional are more robust.
 
 *** First-class functions
 
-[[file:xref/../../reference/special_forms#fn][fn]] creates a function object. It yields a value like any other - you
+[[http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/fn][fn]] creates a function object. It yields a value like any other - you
 can store it in a var, pass it to functions etc.
 
 #+BEGIN_SRC clojure
@@ -694,8 +697,8 @@ never change!*
 
 *** Immutable Data Structures
 
-The easiest way to avoid mutating state is to use immutable [[file:xref/../../reference/data_structures][data
-structures]]. Clojure provides a set of immutable lists, vectors, sets
+The easiest way to avoid mutating state is to use immutable data
+structure . Clojure provides a set of immutable lists, vectors, sets
 and maps. Since they can't be changed, 'adding' or 'removing'
 something from an immutable collection means creating a new collection
 just like the old one but with the needed change. /Persistence/ is a
@@ -728,7 +731,7 @@ representations and common interfaces:
 
 Applications often need to associate attributes and other data about
 data that is orthogonal to the logical value of the data. Clojure
-provides direct support for this [[file:xref/../../reference/metadata][metadata]]. Symbols, and all of the
+provides direct support for this metadata. Symbols, and all of the
 collections, support a metadata map. It can be accessed with the [[http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/meta][meta]]
 function. Metadata does /not/ impact equality semantics, nor will
 metadata be seen in operations on the value of a collection. Metadata
@@ -751,7 +754,7 @@ these interfaces, and the library functions will work with these
 extensions. This is a big improvement vs. hardwiring a language to the
 concrete implementations of its data types.
 
-A good example of this is the [[file:xref/../../reference/sequences][seq]] interface. By making the core Lisp
+A good example of this is the [[http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/seq][seq]] interface. By making the core Lisp
 list construct into an abstraction, a wealth of library functions are
 extended to any data structure that can provide a sequential interface
 to its contents. All of the Clojure data structures can provide
@@ -806,8 +809,8 @@ function calls. Many such languages guarantee that function calls made
 in tail position do not consume stack space, and thus recursive loops
 utilize constant space. Since Clojure uses the Java calling
 conventions, it cannot, and does not, make the same tail call
-optimization guarantees. Instead, it provides the [[file:xref/../../reference/special_forms#recur][recur special
-operator]], which does constant-space recursive looping by rebinding and
+optimization guarantees. Instead, it provides the [[http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/recur][recur]] special
+operator, which does constant-space recursive looping by rebinding and
 jumping to the nearest enclosing loop or function frame. While not as
 general as tail-call-optimization, it allows most of the same elegant
 constructs, and offers the advantage of checking that calls to recur
@@ -1174,7 +1177,7 @@ please consider contributing to this web site, clojurescript.org. All of
 the content is [[https://github.com/clojure/clojurescript-site][stored
 in GitHub]] and pull requests and issues are accepted. For more
 information on how to contribute, see the page on
-[[file:contributing_site][contributing to the site]]. Every page has a
+[[#content/community/contributing_site][contributing to the site]]. Every page has a
 link to the corresponding source file in the bottom right corner. If you
 have an idea for a new guide or updated documentation, please
 [[https://github.com/clojure/clojurescript-site/issues][file an issue]]
@@ -1318,7 +1321,7 @@ Small changes can be proposed directly in the GitHub web interface:
    is at [[https://github.com/clojure/clojurescript-site/blob/master/content/community/contributing_site.adoc]].
 3. Click the edit (pencil) icon.
 4. Content is written using the asciidoc format, which is similar to
-   Markdown. The [[file:editing][Editing]] page lists examples of the most common things
+   Markdown. The [[#content/community/editing][Editing]] page lists examples of the most common things
    you will encounter when editing content on this site. Make your
    changes in the text box. You can preview your changes using the
    "Preview changes" tab. GitHub understands asciidoc format and will
@@ -1359,7 +1362,7 @@ To create a local environment for working on a bigger change:
    change. You'll use this branch to submit a pull request.
 4. Make one or more commits on this branch, modifying or adding one or
    more files. See the section below on how to build and preview
-   changes locally. The [[file:editing][Editing]] page lists examples of the most common
+   changes locally. The [[#content/community/editing][Editing]] page lists examples of the most common
    things you will encounter when editing content on this site.
 5. Use ~git push~ to push your changes to the branch.
 6. Go to https://github.com/username/clojurescript-site/tree/branchname.
@@ -1581,12 +1584,12 @@ development process]] as Clojure.
 *** Dev Docs
 
 - [[https://clojure.atlassian.net/browse/CLJS][Bugs and feature status]]
-- [[file:building][Building the Compiler]]
-- [[file:patches][Patches]]
-- [[file:running-tests][Running the Tests]]
-- [[file:closure][Closure Compiler Development]]
-- [[file:custom-repls][Custom REPLs]]
-- [[file:xref/../../../reference/bootstrapping][Bootstrapping the Compiler]]
+- [[#content/community/building][Building the Compiler]]
+- [[#content/community/patches][Patches]]
+- [[#content/community/running-tests][Running the Tests]]
+- [[#content/community/closure][Closure Compiler Development]]
+- [[#content/community/custom-repls][Custom REPLs]]
+- [[#content/reference/bootstrapping][Bootstrapping the Compiler]]
 
 ** Editing
 :PROPERTIES:
@@ -2075,7 +2078,7 @@ nil
 
 For more complex situations, reproduction could involve additional code,
 or even a new self-host unit test that exhibits the problem. Information
-on self-host unit tests is [[file:running-tests][here]].
+on self-host unit tests is [[#content/community/running-tests][here]].
 
 ** Reporting Issues
 :PROPERTIES:
@@ -2092,7 +2095,7 @@ assess and determine whether it is an issue. If needed, they can file a
 ticket in the [[https://clojure.atlassian.net/browse/CLJS][ClojureScript issue tracker]].
 
 It's important that before submitting any issue that you have a thorough
-understanding of the [[file:xref/../../../guides/quick-start][Quick Start]] first. Even if you are an experienced
+understanding of the [[#content/guides/quick-start][Quick Start]] first. Even if you are an experienced
 ClojureScript developer this is required reading.
 
 It's helpful, but not essential, to first check the [[https://clojure.atlassian.net/browse/CLJS][existing bug
@@ -2121,7 +2124,7 @@ gists / pastebins, or zips.
 #+BEGIN_QUOTE
 *Note*
 
-Bootstrap issues may require special consideration. Please see [[file:reporting-bootstrap-issues][Reporting
+Bootstrap issues may require special consideration. Please see [[#content/community/reporting-bootstrap-issues][Reporting
 Bootstrap Issues]] for more details.
 #+END_QUOTE
 
@@ -2426,7 +2429,7 @@ verification - if only to try a sanity ~(js/alert "Hello CLJS!")~:
 1. You can launch a browser REPL by running ~clj -M -m cljs.main~ from
    the clojurescript project root dir.
 2. Or from a new empty dir, create a ~deps.edn~ that points to your
-   [[file:building][build of the ClojureScript compiler]] replacing ~1.10.123~ with your
+   [[#content/community/building][build of the ClojureScript compiler]] replacing ~1.10.123~ with your
    local version:
 
    #+BEGIN_SRC clojure
@@ -2446,7 +2449,7 @@ verification - if only to try a sanity ~(js/alert "Hello CLJS!")~:
 :END:
 
 *This guide requires ClojureScript 1.10.238 or later and assumes
-familiarity with the [[file:xref/../../guides/quick-start][Quick Start]]*.
+familiarity with the [[#content/guides/quick-start][Quick Start]]*.
 
 As client applications become larger it becomes desirable to load only
 the code actually required to run a particular logical
@@ -2608,7 +2611,7 @@ JavaScript by specifiyng ~:rename-prefix~ compiler option.
 :END:
 
 *This guide requires ClojureScript 1.10.238 or later and assumes
-familiarity with the [[file:xref/../../guides/quick-start][Quick Start]]*.
+familiarity with the [[#content/guides/quick-start][Quick Start]]*.
 
 This page documents how to write externs for third party JavaScript
 libraries that do not conform to Google Closure Compiler conventions
@@ -2631,6 +2634,9 @@ compiler can now automatically generate missing externs as well as
 greatly aid the process of writing comprehensive externs.
 
 *** Externs Inference
+:PROPERTIES:
+:CUSTOM_ID: content/guides/externs#externs-inference
+:END:
 
 Imagine that we have specified a foreign library ~some.fooLib~. We would
 like to write interop against this library but have certainty that
@@ -3179,12 +3185,12 @@ routing etc.) are addressed by composing together special-purpose
 libraries.
 
 To get started on ClojureScript projects, the ClojureScript Wiki
-provides several [[file:project-templates][project templates]], as well
-as a catalog of [[file:xref/../../../community/libraries][libraries]].
+provides several [[#content/guides/project-templates][project templates]], as well
+as a catalog of [[#content/community/libraries][libraries]].
 
 **** Do people use ClojureScript in production?
 
-Yes [[file:xref/../../../community/companies][they do]].
+Yes [[#content/community/companies][they do]].
 
 **** Is ClojureScript mature/stable?
 
@@ -3241,8 +3247,8 @@ all let you include React components without any effort.
 *** Tools
 **** Are there good editors for ClojureScript?
 
-Definitely. A lot of people use [[file:xref/../../../tools/emacs-inf][Emacs with Clojure]], there are also
-excellent plugins for [[file:xref/../../../tools/cursive][IntelliJ]], [[file:xref/../../../tools/vim][Vim]], Eclipse and [[file:xref/../../../tools/sublime][Sublime Text]].
+Definitely. A lot of people use [[#content/tools/emacs-inf][Emacs with Clojure]], there are also
+excellent plugins for [[#content/tools/cursive][IntelliJ]], [[#content/tools/vim][Vim]], Eclipse and [[#content/tools/sublime][Sublime Text]].
 
 You'll probably find that structural editing is more practical than what
 you're used to, because it naturally lets you manipulate the building
@@ -3507,16 +3513,16 @@ that the compiler isn't compiling more than it should.
 :CUSTOM_ID: content/guides/guides
 :END:
 
-- [[file:quick-start][Quick Start]]
-- [[file:faq][FAQ]]
-- [[file:faq-js][FAQ (for JavaScript Devs)]]
-- [[file:externs][Externs]]
-- [[file:ns-forms][Namespaces]]
-- [[file:javascript-modules][JavaScript Modules]]
-- [[file:project-templates][Project Templates]]
-- [[file:self-hosting][Optional Self-hosting]]
-- [[file:native-executables][Native Executables]]
-- [[file:promise-interop][Promise Interop]]
+- [[#content/guides/quick-start][Quick Start]]
+- [[#content/guides/faq][FAQ]]
+- [[#content/guides/faq-js][FAQ (for JavaScript Devs)]]
+- [[#content/guides/externs][Externs]]
+- [[#content/guides/ns-forms][Namespaces]]
+- [[#content/guides/javascript-modules][JavaScript Modules]]
+- [[#content/guides/project-templates][Project Templates]]
+- [[#content/guides/self-hosting][Optional Self-hosting]]
+- [[#content/guides/native-executables][Native Executables]]
+- [[#content/guides/promise-interop][Promise Interop]]
 
 ** JavaScript Modules (Alpha)
 :PROPERTIES:
@@ -3528,7 +3534,7 @@ that the compiler isn't compiling more than it should.
 :END:
 
 *This guide requires ClojureScript 1.10.238 or later and assumes
-familiarity with the [[file:xref/../../guides/quick-start][Quick Start]]*.
+familiarity with the [[#content/guides/quick-start][Quick Start]]*.
 
 This page documents how to mix modern JavaScript source files seamlessly
 into an existing ClojureScript project. The features documented should
@@ -3560,7 +3566,7 @@ to use dependencies from NPM.
 
 *** Prerequisites
 
-Like the [[file:quickstart.html][Quick Start]], this guide assumes you have the latest release of
+Like the [[#content/guides/quick-start][Quick Start]], this guide assumes you have the latest release of
 [[https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html][JDK 8]], [[https://nodejs.org][Node.js >= 6.9.4]] and rlwrap installed. This guide only uses
 [[https://leiningen.org][Leiningen]] for managing dependencies and is easily adapted to [[http://boot-clj.com][Boot]] or
 [[https://maven.apache.org][Maven]].
@@ -4616,6 +4622,9 @@ your browser's JavaScript Console Network tab and you should be able to
 confirm that the total JavaScript payload is now around 20K.
 
 *** Running ClojureScript on Node.js
+:PROPERTIES:
+:CUSTOM_ID: content/guides/quick-start#running-clojurescript-on-nodejs
+:END:
 
 First make sure you have Node.js installed. For instructions on
 installing Node.js, see the [[https://github.com/nodejs/node/blob/master/README.md][Node.js wiki]]. Only the current stable
@@ -4681,7 +4690,7 @@ work.
 *** Dependencies
 
 ClojureScript supports a wide variety of options for including
-ClojureScript and JavaScript dependencies (see [[file:xref/../../../reference/dependencies][Dependencies]] for
+ClojureScript and JavaScript dependencies (see [[#content/reference/dependencies][Dependencies]] for
 details).
 
 [[http://facebook.github.io/react/][React]] is a popular dependency for ClojureScript projects. [[http://cljsjs.github.io][CLJSJS]]
@@ -4813,7 +4822,7 @@ This simple optimization eliminates about 2.7mb of generated JavaScript.
 :END:
 
 *This guide requires ClojureScript 1.10.741 or later and assumes
-familiarity with the [[file:xref/../../guides/quick-start][Quick Start]]*.
+familiarity with the [[#content/guides/quick-start][Quick Start]]*.
 
 This page documents how to integrate ClojureScript with a typical
 JavaScript bundler such as [[http://webpack.js.org][Webpack]]. You should have [[http://nodejs.org][Node.js]]
@@ -5088,7 +5097,7 @@ Stay tuned!
 :CUSTOM_ID: content/news/2017-07-10-code-splitting
 :END:
 
-This is the first post in the [[file:2017-07-07-sneak-preview][Sneak Preview]] series.
+This is the first post in the [[#content/news/2017-07-07-sneak-preview][Sneak Preview]] series.
 
 As client applications increase in size it becomes desirable to optimize
 the time to load a logical screen. Network requests should be minimized
@@ -7185,7 +7194,7 @@ can benefit regardless of what other JavaScript and ClojureScript build
 tools they may prefer.
 
 If you want to cut to the chase and walk through a tutorial, head over
-to the [[file:xref/../../guides/webpack][new guide]]. For some history and context, read on.
+to the [[#content/guides/webpack][new guide]]. For some history and context, read on.
 
 Over the years we've implemented and shipped a variety of features to
 help integration with the JavaScript ecosystem, but the end result has,
@@ -8064,7 +8073,7 @@ a name that corresponds to the name in the original source. Add an
 externs entry for this missed case.
 
 For more information about the specifics of ~:foreign-libs~ compiler
-option syntax consult [[file:dependencies]].
+option syntax consult [[#content/reference/dependencies][dependencies]].
 
 ** Bootstrapping the Compiler
 :PROPERTIES:
@@ -8232,14 +8241,14 @@ keys have these semantics:
 - ~:module-type~ (Optional) indicates that the foreign lib uses a given
   module system. Can be one of ~:commonjs~, ~:amd~, ~:es6~. Note that if
   supplied, ~:requires~ is not used (as it is implicitly determined). For
-  more info see [[file:xref/../javascript-module-support][JavaScript Module Support (Alpha)]].
+  more info see [[#content/reference/javascript-module-support][JavaScript Module Support (Alpha)]].
 - ~:preprocess~ (Optional) Used to preprocess / transform code in other
   dialects (JSX, etc.). The value can be either a symbol or a
   keyword. If symbol is provided, it should resolve to a function that
   takes two parameters: js-module and options maps. Compiler will
   require the namespace to which the symbol refers if it is not yet
   loaded. If value is keyword, it is used as dispatch value for
-  ~cljs.clojure/js-transforms~ multimethod. For more info see [[file:xref/../javascript-library-preprocessing][JavaScript
+  ~cljs.clojure/js-transforms~ multimethod. For more info see [[#content/reference/javascript-library-preprocessing][JavaScript
   Library Preprocessing]].
 - ~:global-exports~ (Optional) used to map provided namespaces to globally
   exported values. The keys may be symbols or strings. If present the
@@ -8344,7 +8353,7 @@ applying Closure optimizations, NPM dependencies are passed through
 Closure Compiler and not all NPM libraries contain Closure-compatible
 code.
 
-A reliable alternative can be found with [[file:xref/../../guides/webpack][ClojureScript with Webpack]].
+A reliable alternative can be found with [[#content/guides/webpack][ClojureScript with Webpack]].
 #+END_QUOTE
 
 #+BEGIN_SRC clojure
@@ -8438,7 +8447,7 @@ human-readable manner. Defaults to true.
 
 **** :source-map
 
-See [[file:source-maps][Source-maps]]. Under optimizations ~:none~ the
+See [[#content/reference/source-maps][Source-maps]]. Under optimizations ~:none~ the
 valid values are ~true~ and ~false~, with the default being
 ~true~. Under all other optimization settings must specify a path to
 where the source map will be written.
@@ -8471,7 +8480,7 @@ Valid options are ~:nodejs~, ~:webworker~, ~:bundle~, and ~:none~.
 The default (no ~:target~ specified) implies browsers are being
 targeted.
 
-Have a look [[file:xref/../../../guides/quick-start#running-clojurescript-on-nodejs][here]] for more information on how to run your code in nodejs.
+Have a look [[#content/guides/quick-start#running-clojurescript-on-nodejs][here]] for more information on how to run your code in nodejs.
 
 ~:webworker~ produces a bootstrap script suitable for loading with Web
 Workers.
@@ -8792,7 +8801,7 @@ option to remove the shebang.
 **** :infer-externs
 
 Enables automatically generating externs for interop calls to
-JavaScript. Defaults to ~false~. For more info see [[file:xref/../../guides/externs#externs-inference][Externs (Alpha)]]
+JavaScript. Defaults to ~false~. For more info see [[#content/guides/externs#externs-inference][Externs (Alpha)]]
 
 #+BEGIN_SRC clojure
 :infer-externs true
@@ -8980,7 +8989,7 @@ defaults to ~true~.
 **** :rename-prefix
 
 Specifies a prefix that will be prepended to all variables. Can be used
-when [[file:xref/../../guides/code-splitting][Code Splitting]] to prevent interference with other code in
+when [[#content/guides/code-splitting][Code Splitting]] to prevent interference with other code in
 JavaScript's global scope.
 
 #+BEGIN_SRC clojure
@@ -9154,7 +9163,7 @@ Is a function that will be called after a successful build.
 :END:
 
 *This guide requires ClojureScript 1.10.238 or later and assumes
-familiarity with the [[file:xref/../../guides/quick-start][Quick Start]]*.
+familiarity with the [[#content/guides/quick-start][Quick Start]]*.
 
 Every non-trivial ClojureScript application will eventually need to
 consume code created by others. ClojureScript developers can of course
@@ -9162,7 +9171,7 @@ take advantage of code authored using ClojureScript. However,
 ClojureScript developers can also consume arbitrary JavaScript code,
 whether or not it was written with ClojureScript in mind.
 
-This guide assumes you've worked through the [[file:xref/../../../guides/quick-start][Quick Start]] guide, and are
+This guide assumes you've worked through the [[#content/guides/quick-start][Quick Start]] guide, and are
 equipped with the dependencies introduced there.
 
 *** Consuming JavaScript Code
@@ -9576,23 +9585,23 @@ value and rebuild if you'd like to see this error go away.
 
 - [[http://cljs.info/cheatsheet/][ClojureScript Cheatsheet]]
 - [[http://cljs.github.io/api/][ClojureScript Syntax and API Reference]]
-- [[file:javascript-api][JavaScript API]]
+- [[#content/reference/javascript-api][JavaScript API]]
 
 *** Reference Documentation
 
-- [[file:compiler-options][Compiler Options]]
-- [[file:repl-options][REPL Options]]
-- [[file:dependencies][Dependencies]]
-- [[file:packaging-foreign-deps][Packaging Foreign Dependencies]]
-- [[file:repl-and-main][The REPL and main entry points]]
-- [[file:repl][REPL and Evaluation Environments]]
-- [[file:advanced-compilation][Advanced Compilation]]
-- [[file:bootstrapping][Bootstrapping the Compiler]]
-- [[file:google-closure-library][Google Closure Library]]
-- [[file:source-maps][Source Maps]]
-- [[file:javascript-module-support][JavaScript Module Support (Alpha)]]
-- [[file:javascript-library-preprocessing][JavaScript Library Preprocessing]]
-- [[file:javascript-api][JS API]]
+- [[#content/reference/compiler-options][Compiler Options]]
+- [[#content/reference/repl-options][REPL Options]]
+- [[#content/reference/dependencies][Dependencies]]
+- [[#content/reference/packaging-foreign-deps][Packaging Foreign Dependencies]]
+- [[#content/reference/repl-and-main][The REPL and main entry points]]
+- [[#content/reference/repl][REPL and Evaluation Environments]]
+- [[#content/reference/advanced-compilation][Advanced Compilation]]
+- [[#content/reference/bootstrapping][Bootstrapping the Compiler]]
+- [[#content/reference/google-closure-library][Google Closure Library]]
+- [[#content/reference/source-maps][Source Maps]]
+- [[#content/reference/javascript-module-support][JavaScript Module Support (Alpha)]]
+- [[#content/reference/javascript-library-preprocessing][JavaScript Library Preprocessing]]
+- [[#content/reference/javascript-api][JS API]]
 
 ** Google Closure Library
 :PROPERTIES:
@@ -9851,7 +9860,7 @@ method gets and returns an object which satisfies the ~IJavaScript~
 protocol. The object can be a plain map or a record with keys like ~:url~,
 ~:provides~, ~:requires~ and ~:source~. The second argument which is passed to
 ~js-transforms~ is a map with the compiler options. The JavaScript
-preprocessing happens before [[file:xref/../javascript-module-support][module conversion]], however, both steps are
+preprocessing happens before [[#content/reference/javascript-module-support][module conversion]], however, both steps are
 independent of each other and can be used in disjunction.
 
 ** JavaScript Module Support (Alpha)
@@ -9919,7 +9928,7 @@ using the name that you've specified for the module with the ~:provides~
 compiler option. For the CommonJS module shown above we've specified the
 name ~calculator~. We can now use the module in our ClojureScript code
 in the same way as we would use modules from the
-[[file:xref/../google-closure-library][Google Closure Library]].
+[[#content/reference/google-closure-library][Google Closure Library]].
 
 #+BEGIN_SRC clojure
 (ns my-project.core
@@ -10045,7 +10054,7 @@ a ~:requires~ vector.
 :END:
 
 *This guide requires ClojureScript 1.10.238 or later and assumes
-familiarity with the [[file:xref/../../guides/quick-start][Quick Start]]*.
+familiarity with the [[#content/guides/quick-start][Quick Start]]*.
 
 *** The cljs.main namespace
 
@@ -10265,7 +10274,7 @@ option.
 :END:
 
 ClojureScript REPLs can take nearly all the same options that can be
-supplied to ~cljs.closure/build~, for details see [[file:compiler-options][Compiler Options]]. This
+supplied to ~cljs.closure/build~, for details see [[#content/reference/compiler-options][Compiler Options]]. This
 page documents additional supported options.
 
 Note that options presented below under General Options should be passed
@@ -10286,6 +10295,9 @@ of paths to analyze.
 #+END_SRC
 
 **** :def-emits-var
+:PROPERTIES:
+:CUSTOM_ID: content/reference/repl-options#def-emits-var
+:END:
 
 Sets whether ~def~ (and derived) forms evaluated at the REPL return
 either a Var (if set to ~true~) or the ~def~ init value (if
@@ -10438,7 +10450,7 @@ cljs.user=> (.format gas-price 5.259)
 
 *This reference is intended for people who would like to launch REPLs
 programmatically from Clojure for some reason. The recommended way to
-start REPL is documented in the [[file:xref/../../guides/quick-start][Quick Start]]*.
+start REPL is documented in the [[#content/guides/quick-start][Quick Start]]*.
 
 One of the reasons for creating ClojureScript is that JavaScript
 reaches. There are many interesting environments in which JavaScript can
@@ -10661,7 +10673,7 @@ The ~load~ function takes a list of namespaces which are provided by a
 JavaScript file and the URL for the file and will load JavaScript from
 the given URL into the environment. The implementation is not
 responsible for ensuring that each namespace is loaded once and only
-once, as this is [[file:xref/../../../guides/custom-repls#eliminating-loaded-libs-tracking][managed by the infrastructure]].
+once.
 
 **** Browser as Evaluation Environment
 
@@ -10987,7 +10999,7 @@ addition, it includes an integrated REPL environment.
 :END:
 
 *This guide requires ClojureScript 1.10.238 or later and assumes
-familiarity with the [[file:xref/../../guides/quick-start][Quick Start]]*.
+familiarity with the [[#content/guides/quick-start][Quick Start]]*.
 
 Assuming you already have ~clojure-mode~, run ~M-x package-list-packages~
 and install ~inf-clojure~. If you are using Emacs on OS X be sure to
@@ -11279,22 +11291,22 @@ however add a test report event listener by adding a method to the
 :END:
 *** Testing
 
-- [[file:testing][Testing]]
+- [[#content/tools/testing][Testing]]
 
 *** Editors
 
-- [[file:cursive][Cursive]]
-- [[file:emacs-inf][Emacs Inferior Clojure]]
-- [[file:vscode][VS Code]]
-- [[file:light-table][Light Table]]
-- [[file:sublime][Sublime Text 2]]
-- [[file:vim][Vim]]
-- [[file:atom][Atom]]
+- [[#content/tools/cursive][Cursive]]
+- [[#content/tools/emacs-inf][Emacs Inferior Clojure]]
+- [[#content/tools/vscode][VS Code]]
+- [[#content/tools/light-table][Light Table]]
+- [[#content/tools/sublime][Sublime Text 2]]
+- [[#content/tools/vim][Vim]]
+- [[#content/tools/atom][Atom]]
 
 *** Build Tools
 
-- [[file:shadow-cljs]]
-- [[file:leiningen][Leiningen]]
+- [[#content/tools/shadow-cljs]]
+- [[#content/tools/leiningen][Leiningen]]
 - [[https://github.com/emezeske/lein-cljsbuild][lein-cljsbuild]]
 - [[https://github.com/bhauman/lein-figwheel][lein-figwheel]]
 
