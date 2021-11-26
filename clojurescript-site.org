@@ -5346,8 +5346,8 @@ ClojureScript has had first class JavaScript interop since its initial
 release in 2011. Similarly to Clojure, embracing the host has always
 been an explicit goal. While the above is true from a syntax standpoint,
 integrating with external JavaScript libraries historically came at the
-cost of some manual work [fn:1] ([[https://clojurescript.org/reference/compiler-options#foreign-libs][manually assembled]] bundles or packaging
-led by [[http://github.com/cljsjs/packages][community efforts]]).
+cost of some manual work [fn:closure_lib] ([[https://clojurescript.org/reference/compiler-options#foreign-libs][manually assembled]] bundles
+or packaging led by [[http://github.com/cljsjs/packages][community efforts]]).
 
 *** A step towards better interaction with external JavaScript
 
@@ -5355,11 +5355,11 @@ The 2015 Google Summer of Code project for ClojureScript succeeded in
 making the interaction with foreign JavaScript modules easier. Relying
 on the [[https://developers.google.com/closure/compiler/][Google Closure Compiler]]'s then new ability to understand most
 widely known JavaScript module formats and convert them to Closure
-compatible JavaScript [fn:2], [[https://github.com/MNeise][Maria Geller]] successfully integrated those
-module features into ClojureScript, along with [[https://clojurescript.org/guides/javascript-modules#babel-transforms][custom preprocessing]]
-steps that allow using features such as the popular JavaScript
-compilation technology [[http://babeljs.io/][Babel]] from the comfort of your ClojureScript
-project [fn:3].
+compatible JavaScript [fn:js_subset], [[https://github.com/MNeise][Maria Geller]] successfully
+integrated those module features into ClojureScript, along with [[https://clojurescript.org/guides/javascript-modules#babel-transforms][custom
+preprocessing]] steps that allow using features such as the popular
+JavaScript compilation technology [[http://babeljs.io/][Babel]] from the comfort of your
+ClojureScript project [fn:maria].
 
 Since then, the Closure Compiler team added module /resolution/ support
 in 2016, which among other things enables consuming modules directly
@@ -5432,7 +5432,7 @@ to all of Closure Compiler's optimizations, including dead code
 elimination and, in projects that take advantage of [[https://clojurescript.org/news/2017-07-10-code-splitting][code splitting]],
 cross module code motion. For example, in our tests React is appreciable
 smaller (~16%) under Closure's advanced compilation than it would be
-using existing popular JavaScript tooling [fn:4]. Additionally, if you
+using existing popular JavaScript tooling [fn:npm]. Additionally, if you
 have a mixed codebase of ClojureScript and JavaScript, not only can you
 now seamlessly consume those JavaScript portions of your code (including
 e.g. JSX transformations!), but also share and bundle their vendor
@@ -5462,17 +5462,20 @@ stone in assuring ClojureScript's sustainability long term.
 We hope you enjoy these new features as much as we do. Thanks for
 reading!
 
-[fn:1] aside from the [[https://developers.google.com/closure/library/][Google Closure Library]] which was deeply integrated
-since ClojureScript's initial release.
+*** footnotes
 
-[fn:2] the subset of JavaScript that the Closure Compiler needs to
-perform optimizations such as dead code elimination (tree shaking),
-variable name rewriting, constant folding and inlining, among others.
+[fn:closure_lib] aside from the [[https://developers.google.com/closure/library/][Google Closure Library]] which was
+deeply integrated since ClojureScript's initial release.
 
-[fn:3] Maria also kept a regular blog whilst working on that project
-that you can read [[http://mneise.github.io/][here]].
+[fn:js_subset] the subset of JavaScript that the Closure Compiler
+needs to perform optimizations such as dead code elimination (tree
+shaking), variable name rewriting, constant folding and inlining,
+among others.
 
-[fn:4] in fact, the Reagent team is already testing [[https://reagent-project.github.io/reagent-site-npm-deps-test/][a version of their
+[fn:maria] Maria also kept a regular blog whilst working on that
+project that you can read [[http://mneise.github.io/][here]].
+
+[fn:npm] in fact, the Reagent team is already testing [[https://reagent-project.github.io/reagent-site-npm-deps-test/][a version of their
 website]] to consume NPM modules. They also [[https://twitter.com/JuhoTeperi/status/885228578098601984][compared it]] to the previous
 version
 
@@ -5656,12 +5659,15 @@ This is the fourth post in the [[/news/2017-07-07-sneak-preview][Sneak Preview]]
 
 Closure compiler can process AMD, CommonJS and ES6 modules giving wide
 support for [[/news/2017-07-12-clojurescript-is-not-an-island-integrating-node-modules][the Node ecosystem]]. Even so, there are popular cases which
-Closure doesn't support directly, such as [[https://facebook.github.io/react/][React's]] [[https://facebook.github.io/react/docs/introducing-jsx.html][JSX]]. [fn:1] Maria
-Geller's Google Summer of Code work also addressed this based on a
-design outlined by David Nolen and a preprocessing hook has been present
-since [[https://github.com/clojure/clojurescript/blob/master/changes.md#1748][version 1.7.48]]. However, the original design makes integration
-with other build tools challenging, and we've revised the approach to
-simplify such integrations.
+Closure doesn't support directly, such as [[https://facebook.github.io/react/][React's]] [[https://facebook.github.io/react/docs/introducing-jsx.html][JSX]]. [fn:closure_comp]
+Maria Geller's Google Summer of Code work also addressed this based on
+a design outlined by David Nolen and a preprocessing hook has been
+present since [[https://github.com/clojure/clojurescript/blob/master/changes.md#1748][version 1.7.48]]. However, the original design makes
+integration with other build tools challenging, and we've revised the
+approach to simplify such integrations.
+
+[fn:closure_comp] There is [[https://github.com/mihaip/react-closure-compiler][third-party compiler pass]] for Closure to
+support JSX
 
 *** Motivation
 
@@ -5732,8 +5738,6 @@ JavaScript practice have made this promise more challenging to deliver.
 
 We believe we are closing the gap and that the vast ecosystem of
 JavaScript libraries can now finally be close at hand.
-
-[fn:1] There is [[https://github.com/mihaip/react-closure-compiler][third-party compiler pass]] for Closure to support JSX
 
 ** [2017-07-28] Release Candidate: 1.9.854
 :PROPERTIES:
