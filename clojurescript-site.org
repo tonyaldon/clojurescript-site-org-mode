@@ -1704,7 +1704,7 @@ is required in our generator!):
 
 There is a bug in the parser used in the current version of JBake for
 links to a page in a parent directory. For example, to link to a page at
-../reference/java\_interop.adoc, you can use a link like this:
+../reference/java_interop.adoc, you can use a link like this:
 
 #+BEGIN_EXAMPLE
 <<xref/../../reference/java_interop#,Java Interop>>
@@ -2337,7 +2337,7 @@ How to setup the important JavaScript runtimes.
 
 Follow [[https://v8.dev/docs/build][Google V8 checkout and build instructions]].
 
-Set the V8\_HOME environment variable to the path where [[https://v8.dev/docs/d8][d8]] was built,
+Set the V8_HOME environment variable to the path where [[https://v8.dev/docs/d8][d8]] was built,
 for example:
 
 ~export V8_HOME="$HOME/v8/out/x64.release"~
@@ -2350,7 +2350,7 @@ Verify via:
 
 Get the JavaScript shell (jsshell) from
 [[https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central/]]. Set
-your SPIDERMONKEY\_HOME environment variable to installation location.
+your SPIDERMONKEY_HOME environment variable to installation location.
 
 Verify via:
 
@@ -2383,7 +2383,7 @@ Verify via:
 
 **** Oracle GraalVM
 
-Get GraalVM from [[https://www.graalvm.org]]. Set your GRAALVM\_HOME
+Get GraalVM from [[https://www.graalvm.org]]. Set your GRAALVM_HOME
 environment variable so that ~$GRAALVM_HOME/js~ executes Graal.js.
 
 Verify via:
@@ -2394,7 +2394,7 @@ Verify via:
 
 Get ChakraCore from
 [[https://github.com/Microsoft/ChakraCore/releases]]. Set your
-CHAKRACORE\_HOME environment variable so that ~$CHAKRACORE_HOME/ch~
+CHAKRACORE_HOME environment variable so that ~$CHAKRACORE_HOME/ch~
 executes ChakraCore.
 
 Verify via:
@@ -2444,7 +2444,7 @@ You can run tests exercising the ClojureScript CLI by running
 where ~repl-env~ is any of the built-in REPL environments (~node~,
 ~browser~, /etc./). This will be passed to ~cljs.main~ 's ~-re~ option.
 
-Note that testing with ~graaljs~ REPL environment requires GRAALVM\_HOME
+Note that testing with ~graaljs~ REPL environment requires GRAALVM_HOME
 to be found early in your PATH. You can test via:
 
 #+BEGIN_SRC sh
@@ -8327,7 +8327,7 @@ actually used. This process is somewhat conservative so if you know that
 you want to keep some code together do this via ~:entries~.
 
 The ~:cljs-base~ module defaults to being written out to ~:output-dir~
-with the name "cljs\_base.js". This may be overridden by specifying a
+with the name "cljs_base.js". This may be overridden by specifying a
 ~:cljs-base~ module describing /only/ ~:output-to~.
 
 Take careful note that a namespace may only appear once across all
