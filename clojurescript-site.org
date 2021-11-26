@@ -870,8 +870,7 @@ Please support these fine books and videos about ClojureScript.
 - [[https://www.learnreagent.com/][Learn Reagent]]
 - [[https://lambdaisland.com][Lambda Island]]
 - [[https://purelyfunctional.tv][PurelyFunctional.tv]]
-- [[https://shop.oreilly.com/product/0636920040316.do][Learning
-  ClojureScript]]
+- [[https://shop.oreilly.com/product/0636920040316.do][Learning ClojureScript]]
 
 ** Building the compiler
 :PROPERTIES:
@@ -1313,12 +1312,10 @@ sign it again as it is the same agreement.
 
 Small changes can be proposed directly in the GitHub web interface:
 
-1. Go to the content repository
-   [[https://github.com/clojure/clojurescript-site]]
+1. Go to the content repository [[https://github.com/clojure/clojurescript-site]]
 2. Navigate to the page you wish to update under content/ - the url
    should match the file base name. For example, this file's content
-   is at
-   [[https://github.com/clojure/clojurescript-site/blob/master/content/community/contributing_site.adoc]].
+   is at [[https://github.com/clojure/clojurescript-site/blob/master/content/community/contributing_site.adoc]].
 3. Click the edit (pencil) icon.
 4. Content is written using the asciidoc format, which is similar to
    Markdown. The [[file:editing][Editing]] page lists examples of the most common things
@@ -1356,8 +1353,8 @@ To create a local environment for working on a bigger change:
 1. Fork the content repository
    [[https://github.com/clojure/clojurescript-site]] - this will create
    a version of the site content under your own user id.
-2. ~git clone~ the forked repository in your local terminal and ~cd
-   clojurescript-site~.
+2. ~git clone~ the forked repository in your local terminal and
+   ~cd clojurescript-site~.
 3. ~git checkout -b <branchname>~ - create a new branch to work on your
    change. You'll use this branch to submit a pull request.
 4. Make one or more commits on this branch, modifying or adding one or
@@ -1372,8 +1369,8 @@ To create a local environment for working on a bigger change:
 To actively contribute to the site, it's important to keep your own fork
 up-to-date with this repository. To do that:
 
-1. Add this repository to your remote urls: ~git remote add upstream
-   https://github.com/clojure/clojurescript-site.git~.
+1. Add this repository to your remote urls:
+   ~git remote add upstream https://github.com/clojure/clojurescript-site.git~.
 2. Before every contribution:
   - fetch the content of upstream: ~git fetch upstream~ ;
   - move to your master branch: ~git checkout master~ (in case you
@@ -1381,8 +1378,7 @@ up-to-date with this repository. To do that:
   - clean your master branch of any unplanned modifications by reseting
     the HEAD to the fetched branch: ~git reset --hard upstream/master~;
     and
-  - create a new branch as explained above: ~git checkout -b
-    <branchname>~
+  - create a new branch as explained above: ~git checkout -b <branchname>~
 
 *** Building and Previewing Changes
 
@@ -1590,8 +1586,7 @@ development process]] as Clojure.
 - [[file:running-tests][Running the Tests]]
 - [[file:closure][Closure Compiler Development]]
 - [[file:custom-repls][Custom REPLs]]
-- [[file:xref/../../../reference/bootstrapping][Bootstrapping the
-  Compiler]]
+- [[file:xref/../../../reference/bootstrapping][Bootstrapping the Compiler]]
 
 ** Editing
 :PROPERTIES:
@@ -2064,9 +2059,7 @@ should be stand-alone (squashed and not dependent on earlier patches).
 
 Edit the ticket's Patch field to indicate either "Code" or "Code and
 Test". This makes it easier for others to find patches in need of review
-(appearing in the
-[[https://clojure.atlassian.net/issues/?filter=10017][CLJS Screenable]]
-preset filter).
+(appearing in the [[https://clojure.atlassian.net/issues/?filter=10017][CLJS Screenable]] preset filter).
 
 *** A note about patches for Windows files
 
@@ -2471,8 +2464,8 @@ verification - if only to try a sanity ~(js/alert "Hello CLJS!")~:
 1. You can launch a browser REPL by running ~clj -M -m cljs.main~ from
    the clojurescript project root dir.
 2. Or from a new empty dir, create a ~deps.edn~ that points to your
-   [[file:building][build of the ClojureScript compiler]] replacing
-   ~1.10.123~ with your local version:
+   [[file:building][build of the ClojureScript compiler]] replacing ~1.10.123~ with your
+   local version:
 
    #+BEGIN_SRC clojure
    {:deps {org.clojure/clojurescript {:mvn/version "1.10.123"}}}
@@ -4792,7 +4785,9 @@ self-hosted functionality.
 #+BEGIN_QUOTE
 *Warning*
 
-If you are building a web application where the final size of the deployed artifact matters significantly, you should not be using any of the functionality outlined on this page.
+If you are building a web application where the final size of the
+deployed artifact matters significantly, you should not be using any
+of the functionality outlined on this page.
 #+END_QUOTE
 
 *** Production Builds
@@ -5098,10 +5093,11 @@ Specs now works properly when caching is enabled.
 
 #+BEGIN_QUOTE
 *NOTE*: that this release introduces a new warning for incorrect code
- which employs variadic signatures in protocol method
- implementations. Such code will continue to work with this release. Be
- sure to update any code or libraries that make use of this construct so
- that protocol implementations match some existing signature.
+which employs variadic signatures in protocol method
+implementations. Such code will continue to work with this
+release. Be sure to update any code or libraries that make use of
+this construct so that protocol implementations match some existing
+signature.
 #+END_QUOTE
 
 *** New Features
@@ -6594,8 +6590,8 @@ just further helps get you to your day-to-day development!
 *** Improved Externs Inference
 
 Externs inference has been significantly improved in this release. See
-[[https://clojurescript.org/guides/webpack][ClojureScript with Webpack]]
-for details on what this improved support enables.
+[[https://clojurescript.org/guides/webpack][ClojureScript with Webpack]] for details on what this improved support
+enables.
 
 *** Closure Upgrades
 
@@ -7563,7 +7559,10 @@ with code walking libraries like ~core.async~.
 **** Support Macros that Expand to ~require~ Statements
 
 #+BEGIN_QUOTE
-*NOTE:* this change been reverted in following releases as it was discovered later (after many tests, including ClojureScript Canary) that there are many scenarios which cannot work. It will not be reintroduced.
+*NOTE:* this change been reverted in following releases as it was
+discovered later (after many tests, including ClojureScript Canary)
+that there are many scenarios which cannot work. It will not be
+reintroduced.
 #+END_QUOTE
 
 This release allows macros that expand to ~require~ statements to be
@@ -8328,10 +8327,11 @@ Also see ~:asset-path~.
 *Note*
 
 Note: This will result in the main namespace, along with the transitive
-closure of all =:require=d namespaces to be loaded into your JavaScript
-environment. If you have other non-referenced namespaces that need to be
-loaded, consider either ~:require=ing them or manually loading them by
-issuing the appropriate additional =goog.require~ statements.
+closure of all required (~:require~)  namespaces to be loaded into your
+JavaScript environment. If you have other non-referenced namespaces
+that need to be loaded, consider either ~:require=ing them or manually
+loading them by issuing the appropriate additional =goog.require~
+statements.
 #+END_QUOTE
 
 **** :modules
@@ -8476,7 +8476,8 @@ quoted.
 #+BEGIN_QUOTE
 *Note*
 
-For ~:optimizations :none~, a ~:main~ option must be specified for preloads to work.
+For ~:optimizations :none~, a ~:main~ option must be specified for
+preloads to work.
 #+END_QUOTE
 
 **** :pretty-print
@@ -8933,8 +8934,10 @@ possible value types:
 4. Falsey - Don't wrap. This is the default.
 
 #+BEGIN_SRC clojure
-;; function (fn [js-output] (str "(function(){" js-output
-"};).call(window);"))
+;; function
+(fn [js-output]
+  (str "(function(){" js-output "};).call(window);"))
+
 
 ;; string
 "(function(){%s};).call(window);"
@@ -11412,8 +11415,8 @@ In ~src/clj/myapp/repl.clj~:
 :CLOJURESCRIPT_SITE_DATE: 2021-07-11
 :CUSTOM_ID: content/tools/vscode
 :END:
-[[https://code.visualstudio.com/][
-Visual Studio Code]] has Clojure and ClojureScript support via the [[https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva][Calva]]
+
+[[https://code.visualstudio.com/][Visual Studio Code]] has Clojure and ClojureScript support via the [[https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva][Calva]]
 extension.
 
 From the [[https://calva.io/][calva documentation]]:
