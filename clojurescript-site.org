@@ -943,18 +943,18 @@ then create a test case.
 Find an appropriate test case file for your unit test. To test your
 specific test you must first build Closure Compiler:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 mvn clean && mvn -DskipTests -pl externs/pom.xml,pom-main.xml,pom-main-shaded.xml
-#+END_EXAMPLE
+#+END_SRC
 
 At this point unless you need to recompile your compiler changes you can
 simply compile and run your test case which takes less time. In the
 following replace ~TestClass#testMethod~ with the class and method that
 you are testing.
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 mvn -pl pom-main.xml compiler:testCompile surefire:test -Dtest=TestClass#testMethod
-#+END_EXAMPLE
+#+END_SRC
 
 Once your tests are passing create a branch if you haven't already with
 your fixes and submit a pull request. Your pull request should probably
@@ -967,9 +967,9 @@ in ClojureScript.
 
 Build Closure Compiler:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 mvn clean && mvn -DskipTests -pl externs/pom.xml,pom-main.xml,pom-main-unshaded.xml
-#+END_EXAMPLE
+#+END_SRC
 
 This will install the unshaded JAR in your local maven, take note of the
 version. In the ClojureScript repo change the dependency information for
@@ -2503,15 +2503,15 @@ demonstrate these new enhancements.
 
 Create a project folder:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 mkdir -p hello-modules
 cd hello-modules
 mkdir src
-#+END_EXAMPLE
+#+END_SRC
 
 Create a ~build.edn~ file that looks like the following:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SCR clojure
 {:output-dir "out"
  :asset-path "/out"
  :browser-repl false
@@ -2519,11 +2519,11 @@ Create a ~build.edn~ file that looks like the following:
                  :output-to "out/foo.js"}
            :bar {:entries #{bar.core}
                  :output-to "out/bar.js"}}}
-#+END_EXAMPLE
+#+END_SCR
 
 Now make an ~index.html~ file:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC html
 <html>
     <body>
          <button id="button">Load Bar!</button>
@@ -2531,20 +2531,20 @@ Now make an ~index.html~ file:
          <script src="out/foo.js" type="text/javascript"></script>
     </body>
 </html>
-#+END_EXAMPLE
+#+END_SRC
 
 *** The Sources
 
 Create the ~foo.core~ namespace:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 mkdir -p src/foo
 touch src/foo/core.cljs
-#+END_EXAMPLE
+#+END_SRC
 
 Edit this file to look like the following:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns foo.core
   (:require [goog.dom :as gdom]
             [goog.events :as events]
@@ -2560,7 +2560,7 @@ Edit this file to look like the following:
         ((resolve 'bar.core/woz))))))
 
 (loader/set-loaded! :foo)
-#+END_EXAMPLE
+#+END_SRC
 
 Notice the unfamiliar namespace ~cljs.loader~. This namespace provides a
 Google Closure ModuleManager singleton to manage the loading of code
@@ -2579,12 +2579,12 @@ multiple times which may lead to unpredictable behavior.
 
 Create the ~bar.core~ namespace:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 mkdir -p src/bar
 touch src/bar/core.cljs
-#+END_EXAMPLE
+#+END_SRC
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns bar.core
   (:require [cljs.loader :as loader]))
 
@@ -2594,15 +2594,15 @@ touch src/bar/core.cljs
   (println "WOZ!"))
 
 (loader/set-loaded! :bar)
-#+END_EXAMPLE
+#+END_SRC
 
 *** Build the Project
 
 Build your project and start the builtin HTTP server:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 clj -M -m cljs.main -v -co build.edn -c -s
-#+END_EXAMPLE
+#+END_SRC
 
 Navigate to [[http://localhost:9000/index.html]].
 
@@ -2613,9 +2613,9 @@ the function in the other namespace gets invoked.
 
 Build your project:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 clj -M -m cljs.main -co build.edn -O advanced -c -s
-#+END_EXAMPLE
+#+END_SRC
 
 Navigate to [[http://localhost:9000/index.html]]. Your application
 should function correctly even though advanced compiled.
@@ -2731,11 +2731,11 @@ required externs. When you run your build you will see a new file in
 your output directory ~inferred_externs.js~. If you examine its contents
 it will probably look similar to the following:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 var Foo = {};
 Foo.Bar = function() {};
 Foo.Bar.prototype.baz = function() {};
-#+END_EXAMPLE
+#+END_SRC
 
 Quickly integrating foreign JavaScript libraries without complete
 externs is now considerably easier and less error prone.
@@ -2766,7 +2766,7 @@ file. Even here the ClojureScript compiler can ease the process:
 
 Imagine that our externs file looks something like the following:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 var Foo = {};
 /**
  * @constructor
@@ -2778,7 +2778,7 @@ Foo.Bar.prototype.baz = function() {};
  */
 Foo.Boo = function() {};
 Foo.Boo.prototype.woz = function() {};
-#+END_EXAMPLE
+#+END_SRC
 
 However this isn't sufficient for knowing the type of ~z~ in the
 ClojureScript program. The ClojureScript compiler will issue the
@@ -2790,7 +2790,7 @@ WARNING: Adding extern to Object for property wozz due to ambiguous expression (
 
 We need to add the return type information to the externs file:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 var Foo = {};
 /**
  * @constructor
@@ -2805,7 +2805,7 @@ Foo.Bar.prototype.baz = function() {};
  */
 Foo.Boo = function() {};
 Foo.Boo.prototype.woz = function() {};
-#+END_EXAMPLE
+#+END_SRC js
 
 Touching your source file and re-running build will result in a
 different warning:
@@ -2900,7 +2900,7 @@ manage it. Here's an example:
 
 *JavaScript:*
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 // declaring the state
 var state = {
   count: 0
@@ -2911,7 +2911,7 @@ var state = {
 // updating the state :
 
 state.count = state.count + 1;
-#+END_EXAMPLE
+#+END_SRC
 
 *ClojureScript:*
 
@@ -2973,7 +2973,7 @@ which is /as if/ you had written:
 
 which you would have (painfully) written in JavaScript:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 var myDate = (function(){
   var d = new Date();
   d.setDate(7);
@@ -2981,7 +2981,7 @@ var myDate = (function(){
   d.setFullYear(1991);
   return d;
 }());
-#+END_EXAMPLE
+#+END_SRC
 
 More profoundly, macros make it trivial to separate 2 important
 concerns: making well-structured programs, and making them practical
@@ -3023,9 +3023,9 @@ Indeed, transitioning from JavaScript syntax to Clojure syntax is
 
 JavaScript:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 myFun(x, y, z);
-#+END_EXAMPLE
+#+END_SRC
 
 ClojureScript:
 
@@ -3047,10 +3047,10 @@ This is fun, let's do this again for data structure literals:
 
 JavaScript:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 {a : "b",
  c : [d, e]}
-#+END_EXAMPLE
+#+END_SRC
 
 ClojureScript:
 
@@ -3376,17 +3376,17 @@ your code, but this quickly gets tedious and intrusive.
 For example, let's assume you have this code, and suspect the myFun
 function is faulty:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 var result = x + myFun(y);
-#+END_EXAMPLE
+#+END_SRC
 
 What you would have to do is:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 var z = myFun(y);
 console.log("myFun(y) : ", z);
 var result = x + z;
-#+END_EXAMPLE
+#+END_SRC
 
 In ClojureScript, you can define a ~spy~ macro that does the same thing
 in a very lightweight manner. So the equivalent ClojureScript code:
@@ -3607,11 +3607,11 @@ Like the [[file:quickstart.html][Quick Start]], this guide assumes you have the 
 
 First let's see how JavaScript modules can be a part of your build.
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 mkdir -p hello-es6
 cd hello-es6
 touch project.clj
-#+END_EXAMPLE
+#+END_SRC
 
 Create a ~build.edn~ file with the following contents:
 
@@ -3634,10 +3634,10 @@ the directory structure.
 
 Let's create the main ClojureScript namespace:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 mkdir -p src/hello_es6
 touch src/hello_es6/core.cljs
-#+END_EXAMPLE
+#+END_SRC
 
 Edit this file to look like the following:
 
@@ -3659,10 +3659,10 @@ Closure namespace.
 
 Let's write the JavaScript:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 mkdir -p src/js
 touch src/js/hello.js
-#+END_EXAMPLE
+#+END_SRC
 
 JavaScript files do not declare namespaces, so the ClojureScript
 compiler will compute one based on the location of the entry. Since the
@@ -3671,17 +3671,17 @@ JavaScript file for usage from ClojureScript will be ~js.hello~.
 
 Edit this file to look like the following:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 export var sayHello = function() {
     console.log("Hello, world!");
 };
-#+END_EXAMPLE
+#+END_SRC
 
 Let's check that our watch script works:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 cljs -m cljs.main -co build.edn -w -c
-#+END_EXAMPLE
+#+END_SRC
 
 You can verify the script works as intended by invoking Node on
 ~main.js~:
@@ -3702,9 +3702,9 @@ We'll demonstrate manual hot-loading with the standard Node.js REPL.
 
 Start the REPL:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 clj -M -m cljs.main -co build.edn -r
-#+END_EXAMPLE
+#+END_SRC
 
 Require the ~js.hello~ namespace and try it out:
 
@@ -3717,7 +3717,7 @@ Hello world!
 
 Without quitting your REPL, edit ~src/js/hello.js~ to the following:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 export var sayHello = function() {
     console.log("Hello, world!");
 };
@@ -3726,7 +3726,7 @@ export var sayThings = function(xs) {
         console.log(x);
     }
 };
-#+END_EXAMPLE
+#+END_SRC
 
 Reload your JavaScript module and try the new functionality:
 
@@ -3781,7 +3781,7 @@ libraries. Options to Babel can be provided by adding property
 
 Let's add a React JSX component to ~src/js/hello.js~:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 export var sayHello = function() {
     console.log("Hello, world!");
 };
@@ -3793,7 +3793,7 @@ export var sayThings = function(xs) {
 export var reactHello = function() {
     return <div>Hello world!</div>
 };
-#+END_EXAMPLE
+#+END_SRC
 
 Let's change our ClojureScript:
 
@@ -3816,15 +3816,15 @@ Let's change our ClojureScript:
 
 Run the watch script:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 lein trampoline run -m clojure.main watch.clj
-#+END_EXAMPLE
+#+END_SRC
 
 When the build finishes run the code
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 node main.js
-#+END_EXAMPLE
+#+END_SRC
 
 You should see output like the following:
 
@@ -3854,9 +3854,9 @@ Remove ~cljsjs/babel-standalone~ dependency from your project.clj.
 
 Download ~babel.min.js~ into your project directory:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 curl -O https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js
-#+END_EXAMPLE
+#+END_SRC
 
 Create a new ~src/hello_es6/babel.clj~ file:
 
@@ -3989,34 +3989,34 @@ cover here.
 For the sake of an example, let's assume that we have the following in
 ~src/foo/core.clj~:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns foo.core)
 
 (defmacro add
   [a b]
   `(+ ~a ~b))
-#+END_EXAMPLE
+#+END_SRC
 
 To use this macro in some ClojureScript source, you can employ the
 ~:require-macros~ spec as
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns bar.core
   (:require-macros [foo.core]))
 
 (foo.core/add 2 3)
-#+END_EXAMPLE
+#+END_SRC
 
 Now, ~:require-macros~ is designed to work a lot like ~:require~. So,
 for example, you could directly refer the ~add~ symbol into your
 namespace:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns bar.core
   (:require-macros [foo.core :refer [add]]))
 
 (add 2 3)
-#+END_EXAMPLE
+#+END_SRC
 
 #+BEGIN_QUOTE
 An alternative to the above (which is infrequently seen, but worth
@@ -4028,12 +4028,12 @@ bar.core (:use-macros [foo.core :only [add]]))~.
 
 You could also set up a namespace alias ~foo~:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns bar.core
   (:require-macros [foo.core :as foo]))
 
 (foo/add 2 3)
-#+END_EXAMPLE
+#+END_SRC
 
 **** Sugar
 
@@ -4047,36 +4047,36 @@ all from the same namespace.
 So, continuing on our example, let's say that there is a
 ~src/foo/core.cljs~ file with
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns foo.core)
 
 (defn subtract
   [a b]
   (- a b))
-#+END_EXAMPLE
+#+END_SRC
 
 Now if you wanted to use both add and subtract, you might do something
 like this:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns bar.core
   (:require-macros [foo.core :refer [add]])
   (:require [foo.core :refer [subtract]]))
 
 (add 2 3)
 (subtract 7 4)
-#+END_EXAMPLE
+#+END_SRC
 
 But, there is a bit of ~ns~-form sugar, ~:refer-macros~ that lets you
 write instead:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns bar.core
   (:require [foo.core :refer [subtract] :refer-macros [add]]))
 
 (add 2 3)
 (subtract 7 4)
-#+END_EXAMPLE
+#+END_SRC
 
 The ~:refer-macros~ above really is just sugar, and it is
 algorithmically desugared into the previous form by the compiler.
@@ -4085,24 +4085,24 @@ Similarly, there is ~:include-macros~ sugar that you can use to signal
 that the macros namespace should be required using the same
 specifications as the runtime namespace. So for example, this works:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns bar.core
   (:require [foo.core :as foo :include-macros true]))
 
 (foo/add 2 3)
 (foo/subtract 7 4)
-#+END_EXAMPLE
+#+END_SRC
 
 The above desugars into the more repetitively verbose primitive form:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns bar.core
   (:require-macros [foo.core :as foo])
   (:require [foo.core :as foo]))
 
 (foo/add 2 3)
 (foo/subtract 7 4)
-#+END_EXAMPLE
+#+END_SRC
 
 **** Implicit Sugar
 
@@ -4115,36 +4115,36 @@ their require form.
 To illustrate this, let's say our ~src/foo/core.cljs~ file instead
 looked like this:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns foo.core
   (:require-macros foo.core))
 
 (defn subtract
   [a b]
   (- a b))
-#+END_EXAMPLE
+#+END_SRC
 
 Now, you can consume things like this:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns bar.core
   (:require [foo.core :as foo]))
 
 (foo/add 2 3)
 (foo/subtract 7 4)
-#+END_EXAMPLE
+#+END_SRC
 
 **** Implicit Refer
 
 What about this nice-looking simplification?
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns bar.core
   (:require [foo.core :refer [add subtract]))
 
 (add 2 3)
 (subtract 7 4)
-#+END_EXAMPLE
+#+END_SRC
 
 In this case, the fact that ~add~ is a macro and that ~subtract~ is a
 function is automatically handled by the compiler, thus making it
@@ -4169,17 +4169,17 @@ also works for these macros.
 This is an implementation detail, but it helps you see how this is
 accomplished: When you issue
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (require-macros '[foo.core :as foo :refer [add]])
-#+END_EXAMPLE
+#+END_SRC
 
 at the REPL, this is internally converted into an ~ns~ form that looks
 like
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns cljs.user
   (:require-macros [foo.core :as foo :refer [add]]))
-#+END_EXAMPLE
+#+END_SRC
 
 And, importantly, when you use ~require~, a similar ~ns~ form is
 employed, and it is subject to all the desugaring and inference behavior
@@ -4210,17 +4210,17 @@ mapped to ~cljs.*~ namespaces.
 
 A simple example:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns foo.core
   (:require [clojure.test]))
-#+END_EXAMPLE
+#+END_SRC
 
 can be used instead of
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns foo.core
   (:require [cljs.test]))
-#+END_EXAMPLE
+#+END_SRC
 
 If you do this, the ClojureScript compiler will first see if it can load
 the ~clojure.test~ namespace. Since it doesn't exist, it will fall back
@@ -4229,10 +4229,10 @@ to loading ~cljs.test~.
 At the same time, an alias is set up from ~clojure.test~ to ~cljs.test~,
 as if you had written:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns foo.core
   (:require [cljs.test :as clojure.test]))
-#+END_EXAMPLE
+#+END_SRC
 
 This is important because it allows you to have code that qualifies
 symbols, as in ~clojure.test/test-var~.
@@ -4241,7 +4241,7 @@ With this aliasing, along with the ability to infer macro vars in
 ~:refer~ specs (see “Implicit Refer” above), the following code works
 just fine in ClojureScript:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns foo.core-test
   (:require [clojure.test :as test :refer [deftest is]]))
 
@@ -4249,7 +4249,7 @@ just fine in ClojureScript:
   (is (= 3 4)))
 
 (test/test-var #'foo-test)
-#+END_EXAMPLE
+#+END_SRC
 
 And, more importantly: /This is the exact same code you'd write in
 Clojure/. No reader conditionals needed!
@@ -4257,9 +4257,9 @@ Clojure/. No reader conditionals needed!
 Of course, this also works in the ~require~ ClojureScript macro. So for
 example, you can do:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (require '[clojure.spec :as s])
-#+END_EXAMPLE
+#+END_SRC
 
 Then ~(s/def ::even? (s/and number? even?))~ will work just fine. The
 reason for this is that the ~require~ macro is implemented in terms of
@@ -4329,10 +4329,10 @@ the promise methods.
 
 *JavaScript:*
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 Promise.resolve(42)
   .then(val => console.log(val));
-#+END_EXAMPLE
+#+END_SRC
 
 *ClojureScript:*
 
@@ -4347,7 +4347,7 @@ code.
 
 *JavaScript:*
 
-#+BEGIN_SRC clojure
+#+BEGIN_SRC js
 Promise.resolve(42)
   .then(val => console.log(val))
   .catch(err => console.log(err))
@@ -4356,7 +4356,7 @@ Promise.resolve(42)
 
 *ClojureScript:*
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (.finally
   (.catch
   (.then (js/Promise.resolve 42)
@@ -4369,7 +4369,7 @@ Promise.resolve(42)
     (.then #(js/console.log %))
     (.catch #(js/console.log %))
     (.finally #(js/console.log "cleanup")))
-#+END_EXAMPLE
+#+END_SRC
 
 Promise-heavy code that uses ~await~ results in more complicated code
 structures that aren't very friendly. Take this example from
@@ -4377,7 +4377,7 @@ structures that aren't very friendly. Take this example from
 
 *JavaScript:*
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 const puppeteer = require('puppeteer');
 
 (async () => {
@@ -4392,7 +4392,7 @@ const puppeteer = require('puppeteer');
 
   await browser.close();
 })();
-#+END_EXAMPLE
+#+END_SRC
 
 *ClojureScript:*
 
@@ -4866,28 +4866,28 @@ adapted to other bundlers like Metro for React Native.
 
 First create a project directory:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 mkdir hello-bundler
 cd hello-bundler
-#+END_EXAMPLE
+#+END_SRC
 
 Create a ~deps.edn~ file the following contents:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 {:deps {org.clojure/clojurescript {:mvn/version "1.10.741"}}}
-#+END_EXAMPLE
+#+END_SRC
 
 Create an empty ~package.json~ file:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 echo "{}" > package.json
-#+END_EXAMPLE
+#+END_SRC
 
 Add webpack and its command line tools:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 npm install --save-dev webpack webpack-cli
-#+END_EXAMPLE
+#+END_SRC
 
 We're now ready to setup our JS dependencies.
 
@@ -4895,18 +4895,18 @@ We're now ready to setup our JS dependencies.
 
 Install react and react-dom:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 npm install --save react react-dom
-#+END_EXAMPLE
+#+END_SRC
 
 Now create ~src/hello_bundler/core.cljs~ with the following contents:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns hello-bundler.core
   (:require [react]))
 
 (.log js/console react/Component)
-#+END_EXAMPLE
+#+END_SRC
 
 Notice that we are requiring React as if it was a normal require and a
 normal namespace.
@@ -4914,7 +4914,7 @@ normal namespace.
 In order for this to work we need to set a couple of compiler
 options. Create a ~build.edn~ file with the following:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 {:main hello-bundler.core
  :output-to "out/index.js"
  :output-dir "out"
@@ -4922,7 +4922,7 @@ options. Create a ~build.edn~ file with the following:
  :bundle-cmd {:none ["npx" "webpack" "./out/index.js" "-o" "out" "--mode=development"]
               :default ["npx" "webpack" "./out/index.js" "-o" "out"]}
  :closure-defines {cljs.core/*global* "window"}} ;; needed for advanced
-#+END_EXAMPLE
+#+END_SRC
 
 Our build will generate ~out/index.js~ which is exactly the entry file
 that Webpack is looking for. We'll write the bundler result back into
@@ -4939,9 +4939,9 @@ Metro you probably won't bother with ~:bundle-cmd~.
 Let's see this in action, the following will build your project then
 start a REPL:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 clj -M -m cljs.main -co build.edn -v -c -r
-#+END_EXAMPLE
+#+END_SRC
 
 Your default browser will open [[http://localhost:9000]]. Open the
 Developer Console, you should see that ~React.Component~ got logged.
@@ -4961,14 +4961,14 @@ Reagent. ClojureScript supports this out of the box.
 
 To demonstrate this, change your ~deps.edn~ to the following:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 {:deps {org.clojure/clojurescript {:mvn/version "1.10.741"}
         reagent {:mvn/version "0.10.0" :exclusions [cljsjs/react cljsjs/react-dom]}}}
-#+END_EXAMPLE
+#+END_SRC
 
 Change your source file to the following:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns hello-bundler.core
   (:require [goog.dom :as gdom]
             [reagent.dom :as dom]))
@@ -4981,21 +4981,21 @@ Change your source file to the following:
     [:span {:style {:color "red"}} " and red "] "text."]])
 
 (dom/render [simple-component] (gdom/getElement "app"))
-#+END_EXAMPLE
+#+END_SRC
 
 Rebuild your project, run the REPL:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 clj -M -m cljs.main -co build.edn -v -c -r
-#+END_EXAMPLE
+#+END_SRC
 
 To verify that externs inference allows advanced compilation to work,
 let's make an advanced build. REPLs don't work under advanced
 compilation so you'll have to manually open [[http://localhost:9000]]:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 clj -M -m cljs.main -co build.edn -O advanced -v -c -s
-#+END_EXAMPLE
+#+END_SRC
 
 That's it!
 
@@ -5014,7 +5014,7 @@ You also need to define ~cljs.core/global~ as ~"self"~ (as opposed to
 
 An example ~build-webworker.edn~ might look like:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 {:main hello-bundler.webworker
  :output-to "out/worker/index.js"
  :output-dir "out/worker"
@@ -5022,7 +5022,7 @@ An example ~build-webworker.edn~ might look like:
  :bundle-cmd {:none ["npx" "webpack" "out/worker/index.js" "-o" "out/worker/main.js" "--target=webworker" "--mode=development"]
               :default ["npx" "webpack" "out/worker/index.js" "-o" "out/worker/main.js" "--target=webworker"]}
  :closure-defines {cljs.core/*global* "self"}} ;; needed for advanced
-#+END_EXAMPLE
+#+END_SRC
 
 * News
 ** [2017-06-26] Welcome to ClojureScript News!
@@ -5169,26 +5169,26 @@ technical description below.
 
 Concretely, the following is now an anti-pattern:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 {:modules
   {:vendor {:output-to "..."
             :entries '#{cljsjs.react reagent.* re-frame.*}}
    :main   {:output-to "..."
             :entries '#{myapp.core}
             :depends-on [:vendor]}}
-#+END_EXAMPLE
+#+END_SRC
 
 Previously you would have to manually pin a source (~re-frame~ in this
 case) and its dependencies to a module. Now all that is required is:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 {:modules
   {:vendor {:output-to "..."
             :entries '#{re-frame.core}
    :main   {:output-to "..."
             :entries '#{myapp.core}
             :depends-on [:vendor]}}
-#+END_EXAMPLE
+#+END_SRC
 
 Another significant enhancement is that ~:modules~ now works under all
 optimization settings. By unifying ~:modules~ behavior under all
@@ -5208,7 +5208,7 @@ optimization level.
 
 The following is a simple short example of ~cljs.loader~ functionality:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns views.user
  (:require [cljs.loader :as loader]
            [goog.dom :as gdom]
@@ -5222,7 +5222,7 @@ The following is a simple short example of ~cljs.loader~ functionality:
         ((resolve 'views.admin/init!))))))
 
 (loader/set-loaded! :user)
-#+END_EXAMPLE
+#+END_SRC
 
 Note that this example shows how to call across module boundaries
 without having the compiler complain about functionality not present in
@@ -5244,31 +5244,31 @@ assign every source file to a module.
 
 Assume a simplified module description like:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 {:modules {:module-a {:entries '#{foo.core}}
            :module-b {:entries '#{bar.core}}}
-#+END_EXAMPLE
+#+END_SRC
 
 This will be transformed into a module description that includes the
 implicit base module ~:cljs-base~.
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 {:modules {:cljs-base {:entries []}
            :module-a  {:entries '#{foo.core}
                        :depends-on [:cljs-base]}
            :module-b  {:entries '#{bar.core}
                        :depends-on [:cljs-base]}}
-#+END_EXAMPLE
+#+END_SRC
 
 We will then compute the depth of every module in the graph:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 {:modules {:cljs-base {:entries [] :depth 0}
            :module-a  {:entries '#{foo.core} :depth 1
                        :depends-on [:cljs-base]}
            :module-b  {:entries '#{bar.core} :depth 1
                        :depends-on [:cljs-base]}}
-#+END_EXAMPLE
+#+END_SRC
 
 We then use this to compute a mapping from all depended upon inputs to a
 set of possible module assignments. For example we find all dependencies
@@ -5478,20 +5478,20 @@ refinement. This is nicely illustrated by the history of ~aget~.
 The first minimum viable implementation of ~aget~ was a simple
 function. Six years ago it looked like this:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (defn aget [array i]
    (js* "return ~{array}[~{i}]"))
-#+END_EXAMPLE
+#+END_SRC
 
 This employs the internal ~js*~ special form to directly emit JavaScript
 which uses subscript notation for element access. It looks roughly like
 this:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 function aget(array, i) {
   return array[i];
 }
-#+END_EXAMPLE
+#+END_SRC
 
 #+BEGIN_QUOTE
 Note that ~js*~ is not intended to be used in application-level ClojureScript code.
@@ -5518,9 +5518,9 @@ meant for /arrays/, not /objects/. The additional arguments to ~aget~
 are numeric array indices, not string property names. Nevertheless,
 perhaps to the lure of ease, forms like
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (aget #js {:foo 1} "foo")
-#+END_EXAMPLE
+#+END_SRC
 
 became heavily used in the wild to avoid the name mangling that comes
 with dotted property access and ~:advanced~ compilation. It was an
@@ -5565,9 +5565,9 @@ out in the ~goog.object~ namespace. In particular, [[https://google.github.io/cl
 [[https://google.github.io/closure-library/api/goog.object.html#set][goog.object/set]] are appropriate APIs, suited for this purpose. For
 example, this does what you'd want:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (goog.object/get #js {:foo 1} "foo")
-#+END_EXAMPLE
+#+END_SRC
 
 In fact, ~goog.object/get~ is safer in that it has checks that the object
 being passed is not ~nil~ and that the field being accessed actually
@@ -5616,9 +5616,9 @@ WARNING: cljs.core/aget, arguments must be an array followed by numeric indices,
 
 To enable this new facility, simply add
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 :checked-arrays :warn
-#+END_EXAMPLE
+#+END_SRC
 
 to your ClojureScript [[https://clojurescript.org/reference/compiler-options][compiler options]].
 
@@ -6042,14 +6042,14 @@ Note that in the previous section, ~cljs.main~ synthetically-generated
 an ~index.html~ for us. We'll want to create a custom ~index.html~ for
 our app in the current directory:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC html
 <html>
   <body>
     <canvas id="canvas" width="400" height="300"></canvas>
     <script src="out/main.js"></script>
   </body>
 </html>
-#+END_EXAMPLE
+#+END_SRC
 
 Add the following source in ~src/my_app/core.cljs~ (or
 ~src\my_app\core.cljs~ if on Windows).
@@ -6413,9 +6413,9 @@ involving intermediate sequence generation, thus bypassing the lack of
 locals-clearing and inevitable head-holding that occurs in
 ClojureScript. This means you can now run programs like
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (transduce (comp (map inc) (filter odd?) (take 1e8)) + (iterate inc 0))
-#+END_EXAMPLE
+#+END_SRC
 
 and they will consume very little memory. This example completes in
 around 10 seconds in the Node REPL, using just a few megabytes of RAM,
@@ -6448,10 +6448,10 @@ Finally, using a dedicated map entry type can lead to performance
 improvements in some code that works with map entries. For example, in
 ~:advanced~ mode, this code
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (simple-benchmark [m (zipmap (range 100) (range))]
   (reduce (fn [a [k v]] (if (even? v) (+ a k) a)) 0 m) 100000)
-#+END_EXAMPLE
+#+END_SRC
 
 runs 11% faster in JavaScriptCore, 18% faster in V8, and a whopping 105%
 faster in SpiderMonkey. And if you use the dedicated ~key~ and ~val~
@@ -7129,9 +7129,9 @@ is satisfied, then, in the second clause, ~x~ must be of type
 string. Combined with the ~count~ specialization mentioned above, this
 causes efficient JavaScript to be generated:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 typeof x === "string" && x.length === 0
-#+END_EXAMPLE
+#+END_SRC
 
 **** Not inferring on ~implements?~
 
@@ -8019,25 +8019,25 @@ files are surprisingly simple to provide. For example if the foreign
 library has some property ~Foo.bar~ that you wish to access your externs
 file should have the following entry:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 Foo.bar;
-#+END_EXAMPLE
+#+END_SRC
 
 If the foreign library has some method ~Foo.baz~ that you wish to invoke
 your externs file should have the following entry:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 Foo.baz = function() {};
-#+END_EXAMPLE
+#+END_SRC
 
 Sometimes there will not be a top level API but rather some method
 naming convention, that is, an ad-hoc Interface / Protocol. In these
 cases define your externs using Object:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 Object.foo = function() {};
 Object.bar = function() {};
-#+END_EXAMPLE
+#+END_SRC
 
 Of course sometimes you will miss an extern entry and the the production
 file will produce a cryptic error. Thanks to a couple of Closure
@@ -8054,19 +8054,19 @@ from JavaScript.
 For example, if you have a ~square~ function, you can annotate it with
 ~^:export~ as follows:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (ns my-math.core)
 
 (defn ^:export square [x]
   (* x x))
-#+END_EXAMPLE
+#+END_SRC
 
 With this, you can call your ~square~ function from JavaScript as
 follows:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 my_math.core.square(3);
-#+END_EXAMPLE
+#+END_SRC
 
 This works by including [[https://google.github.io/closure-library/api/goog.html#exportSymbol][goog.exportSymbol]] calls in the emitted
 JavaScript wherever ~:export~ meta is associated with a Var.
@@ -8087,12 +8087,12 @@ code which is using shortened names, consider ~:pseudo-names~ and
 You can individually export the Vars associated with protocol
 methods. In this example, ~bar~ and ~quux~ will be exported:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC clojure
 (defprotocol IFoo
   (^:export bar [this])
   (baz [this x])
   (^:export quux [this x y]))
-#+END_EXAMPLE
+#+END_SRC
 
 *** Fixing Advanced Compilation Issues
 
@@ -9253,7 +9253,7 @@ JavaScript as normal. Whether the file is loaded externally or inline
 makes no difference, both will be applied in the same fashion at
 runtime. To make things simple, we'll define this library inline:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC mhtml
 <script type="text/javascript">
     yayQuery = function() {
         var yay = {};
@@ -9266,7 +9266,7 @@ runtime. To make things simple, we'll define this library inline:
        return yay;
     };
 </script>
-#+END_EXAMPLE
+#+END_SRC
 
 To use this library from ClojureScript, we can simply refer to the
 symbols directly. If you build the following code using ~{:optimizations
@@ -9306,11 +9306,11 @@ library, and is used by Google Closure Compiler to determine which
 symbols must not be renamed. Here's a minimal externs file for our
 yayQuery library:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 var yayQuery = function() {}
 yayQuery.sayHello = function(message) {}
 yayQuery.getMessage = function() {}
-#+END_EXAMPLE
+#+END_SRC
 
 Assuming this file is named as ~yayquery-externs.js~, you can reference
 it as follows in your ~build.edn~ file:
@@ -9371,7 +9371,7 @@ mode compilation, renaming symbols in the external JavaScript library
 and eliminating dead code. Let's adapt our yayQuery library from
 previous examples, as below:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 goog.provide('yq');
 
 yq.debugMessage = 'Dead Code';
@@ -9386,7 +9386,7 @@ yq.yayQuery = function() {
     };
     return yay;
 };
-#+END_EXAMPLE
+#+END_SRC
 
 This code is mostly identical to the previous inline version, but is now
 packaged within a "namespace" exposed using ~goog.provide~. The library
@@ -9422,7 +9422,7 @@ library. Foreign libraries are included in your final output, but are
 not passed through advanced compilation. Let's consider a version of
 yayQuery which does not include a ~goog.provide~:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 yayQuery = function() {
     var yay = {};
     yay.sayHello = function(message) {
@@ -9433,7 +9433,7 @@ yayQuery = function() {
     };
     return yay;
 };
-#+END_EXAMPLE
+#+END_SRC
 
 Using code in foreign libraries from ClojureScript is very similar to
 using code that's been included directly in the page via a ~<script>~
@@ -9547,10 +9547,10 @@ you need:
 (ns cljsjs.react)
 #+END_SRC
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
 <script src="resources/public/js/compiled/your_cljs_code.js" type="text/javascript"></script>
-#+END_EXAMPLE
+#+END_SRC
 
 *** Consuming ClojureScript Code
 
@@ -9920,7 +9920,7 @@ module has the following advantages:
 Following, we will see how we can include the following simple CommonJS
 module into a ClojureScript project.
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 // calculator.js
 var calculator = {
     add: function (a, b) {
@@ -9932,7 +9932,7 @@ var calculator = {
 };
 
 module.exports = calculator;
-#+END_EXAMPLE
+#+END_SRC
 
 **** Adding a JavaScript module to your project configuration
 
@@ -10242,9 +10242,9 @@ classpath. Classpath-relative paths have prefix of @ or @/
 The simplest way to launch a ClojureScript /repl/ is to use the
 following command line with the shipping ~cljs.jar~:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 java -cp cljs.jar cljs.main
-#+END_EXAMPLE
+#+END_SRC
 
 The REPL prompt shows the name of the current namespace, which defaults
 to /cljs.user/.
@@ -10260,18 +10260,18 @@ Several special vars are available when using the REPL:
 To run a file full of ClojureScript code as a script, pass the path to
 the script to ~cljs.main~ as an argument:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 java -cp cljs.jar cljs.main /path/to/myscript.cljs
-#+END_EXAMPLE
+#+END_SRC
 
 *** Passing arguments to a Script
 
 To pass in arguments to a script, pass them in as further arguments when
 launching ~cljs.main~:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 java -cp cljs.jar cljs.main /path/to/myscript.cljs arg1 arg2 arg3
-#+END_EXAMPLE
+#+END_SRC
 
 The arguments will be provided to your program as a seq of strings bound
 to the var ~*command-line-args*~:
@@ -10285,9 +10285,9 @@ to the var ~*command-line-args*~:
 To compile ClojureScript source code, pass the main namespace to
 ~cljs.main~ via the ~-c~ option:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 java -cp src:cljs.jar cljs.main -c my-namespace.core
-#+END_EXAMPLE
+#+END_SRC
 
 The output will be written to the directory specified via the ~-d~
 option (or ~out~ if unspecified), or to the file specified via the ~-o~
@@ -10547,7 +10547,7 @@ optimizations. No advanced optimizations please.
 
 Create a host html page named index.html like the one shown below.
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC html
 <html>
   <head>
     <meta charset="UTF-8">
@@ -10563,7 +10563,7 @@ Create a host html page named index.html like the one shown below.
     </div>
   </body>
 </html>
-#+END_EXAMPLE
+#+END_SRC
 
 There is nothing different about this and what one would do for any
 other browser-based ClojureScript project.
@@ -10835,9 +10835,9 @@ exact same parent directory. The generated JavaScript file
 (~:output-to~) will contain a line at the end linking it to its source
 map like so:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 //# sourceMapping=<sourceMapURL>
-#+END_EXAMPLE
+#+END_SRC
 
 The ~sourceMapURL~ is the ~:source-map~ path, relative to ~:output-to~,
 since that is how the browser will then resolve it. For example, when
@@ -10878,9 +10878,9 @@ can go to the "Install" tab and search for the name of the package you'd
 like to install. If you prefer using the command line, you can also use
 ~apm~ to install packages using:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 $ apm install [package-name]
-#+END_EXAMPLE
+#+END_SRC
 
 *** Parinfer
 
@@ -10931,9 +10931,9 @@ here: [[https://atom.io/packages/linter-joker]]
 To use this, you will also need to install Joker on your machine. You
 can download it [[https://github.com/candid82/joker/releases][here]] or install it via Homebrew with:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC sh
 brew install candid82/brew/joker
-#+END_EXAMPLE
+#+END_SRC
 
 *** Proto REPL
 
@@ -10984,7 +10984,7 @@ alert to appear in your browser.)
 If you don't want to type the command to start Figwheel every time, you
 can save a custom command to your Atom's ~init.js~ / ~init.coffee~ file:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC js
 atom.commands.add('atom-text-editor', 'Start Figwheel with CLJS REPL', function () {
   protoRepl.executeCode(`
     (when
@@ -10996,7 +10996,7 @@ atom.commands.add('atom-text-editor', 'Start Figwheel with CLJS REPL', function 
                  (figwheel-sidecar.repl-api/cljs-repl))))
   `);
 });
-#+END_EXAMPLE
+#+END_SRC
 
 More documentation on extending Proto REPL can be found here:
 [[https://github.com/jasongilman/proto-repl/blob/master/extending_proto_repl.md]]
