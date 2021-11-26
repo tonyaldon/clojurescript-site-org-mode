@@ -2149,8 +2149,8 @@ in non-trivial ways, and the best way to isolate the issue to
 ClojureScript is to remove them from the report altogether.
 
 Please report issues by building the uberjar from master and using this
-to verify the issue. Using [[https://clojurescript.org/reference/repl-and-main][=cljs.main=]] with this uberjar to create a
-minimal repro is ideal. Alternatively, using [[https://clojure.org/guides/getting_started][=clj=]] and ~deps.edn~ is
+to verify the issue. Using [[https://clojurescript.org/reference/repl-and-main][cljs.main]] with this uberjar to create a
+minimal repro is ideal. Alternatively, using [[https://clojure.org/guides/getting_started][clj]] and ~deps.edn~ is
 acceptable. Do not use any other 3rd party tooling (Maven, Leiningen,
 Boot). When creating issues please add all relevant instructions and
 code to reproduce to the ticket directly or via additional
@@ -5534,8 +5534,8 @@ or otherwise), unintended use, and later redesign is common.”
 What /should/ you use for object property access, if ~aget~ and ~aset~ are
 reserved for arrays? ClojureScript makes the Google Closure library
 readily accessible, and there are some nice facilities worth checking
-out in the ~goog.object~ namespace. In particular, [[https://google.github.io/closure-library/api/goog.object.html#get][=goog.object/get=]] and
-[[https://google.github.io/closure-library/api/goog.object.html#set][=goog.object/set=]] are appropriate APIs, suited for this purpose. For
+out in the ~goog.object~ namespace. In particular, [[https://google.github.io/closure-library/api/goog.object.html#get][goog.object/get]] and
+[[https://google.github.io/closure-library/api/goog.object.html#set][goog.object/set]] are appropriate APIs, suited for this purpose. For
 example, this does what you'd want:
 
 #+BEGIN_EXAMPLE
@@ -5546,7 +5546,7 @@ In fact, ~goog.object/get~ is safer in that it has checks that the object
 being passed is not ~nil~ and that the field being accessed actually
 exists on the object, allowing you to supply an alternative “not found”
 value to return if not. If you need to do nested property access, there
-is a [[https://google.github.io/closure-library/api/goog.object.html#getValueByKeys][=goog.object/getValueByKeys=]] that can also be considered as a
+is a [[https://google.github.io/closure-library/api/goog.object.html#getValueByKeys][goog.object/getValueByKeys]] that can also be considered as a
 drop-in replacement for a variadic ~aget~ call.
 
 The ClojureScript standard library itself had places where ~aget~ and
@@ -5957,8 +5957,8 @@ standalone JAR.
 
 **** macOS or Linux: ~clj~
 
-1. [[https://clojure.org/guides/getting_started][Install the =clj=]] command line tool.
-2. In your working directory, create a [[https://clojure.org/guides/deps_and_cli][=deps.edn=]] file with the
+1. [[https://clojure.org/guides/getting_started][Install the clj]] command line tool.
+2. In your working directory, create a [[https://clojure.org/guides/deps_and_cli][deps.edn]] file with the
    following contents:
 
 #+BEGIN_SRC clojure
@@ -5967,7 +5967,7 @@ standalone JAR.
 
 **** Windows
 
-1. Download the ClojureScript JAR [[https://github.com/clojure/clojurescript/releases/download/r1.10.238/cljs.jar][=cljs.jar=]].
+1. Download the ClojureScript JAR [[https://github.com/clojure/clojurescript/releases/download/r1.10.238/cljs.jar][cljs.jar]].
 2. Place it in your working directory.
 
 *** Starting a Browser REPL
@@ -6309,9 +6309,9 @@ ClojureScript side. Some of the improvements include:
 
 *** Stable Names
 
-A new compiler option, [[https://clojurescript.org/reference/compiler-options#stable-names][=:stable-names=]] has been introcuced. This reduces
+A new compiler option, [[https://clojurescript.org/reference/compiler-options#stable-names][:stable-names]] has been introcuced. This reduces
 name churn between advanced builds and facilitates proper vendorization
-if you're using [[https://clojurescript.org/reference/compiler-options#modules][=:modules=]].
+if you're using [[https://clojurescript.org/reference/compiler-options#modules][:modules]].
 
 *** Enhanced Socket REPL and alpha pREPL
 
@@ -6520,13 +6520,13 @@ reflect configuration, as is the case if you use ~:external-config~ with
 Figwheel or Dirac.
 
 In those situations, it is recommended that libraries and tooling employ
-~goog.define~ instead, perhaps with the help of [[https://clojurescript.org/reference/compiler-options#closure-defines][=:closure-defines=]], as
+~goog.define~ instead, perhaps with the help of [[https://clojurescript.org/reference/compiler-options#closure-defines][:closure-defines]], as
 this makes JARs cache-friendly.
 #+END_QUOTE
 
 By default, this feature is disabled unless ClojureScript is being used
 via ~cljs.main~. You can override the default by explicitly using the new
-[[https://clojurescript.org/reference/compiler-options#aot-cache][=:aot-cache=]] compiler option.
+[[https://clojurescript.org/reference/compiler-options#aot-cache][:aot-cache]] compiler option.
 
 Since this strategy doesn't depend on AOT artifacts being included in
 shipping JARS, it should be amenable to [[https://clojure.org/news/2018/01/05/git-deps][Git Deps]]. Perhaps that will come
@@ -6599,7 +6599,7 @@ Thanks to all of the community members who contributed to ClojureScript
 
 Closure Compiler has been upgraded to v20180805.
 
-The [[https://clojurescript.org/reference/compiler-options#npm-deps][=:npm-deps=]] compiler option now defaults to ~false~. Previously,
+The [[https://clojurescript.org/reference/compiler-options#npm-deps][:npm-deps]] compiler option now defaults to ~false~. Previously,
 ~:npm-deps~ defaulted to ~true~.
 
 *** Improved Compiler Performance
@@ -8037,7 +8037,7 @@ follows:
 my_math.core.square(3);
 #+END_EXAMPLE
 
-This works by including [[https://google.github.io/closure-library/api/goog.html#exportSymbol][=goog.exportSymbol=]] calls in the emitted
+This works by including [[https://google.github.io/closure-library/api/goog.html#exportSymbol][goog.exportSymbol]] calls in the emitted
 JavaScript wherever ~:export~ meta is associated with a Var.
 
 #+BEGIN_QUOTE
@@ -8227,7 +8227,7 @@ keys have these semantics:
   results in computed ~:provides~ ~["your.js.deps"]~, and your custom
   ~:provides~ will be overwritten by the generated ~:provides~.
 - ~:file-min~ (Optional) Indicates the URL to the minified variant of the
-  library. This will be used in preference to ~:file~ if [[optimizations][=:optimizations=]]
+  library. This will be used in preference to ~:file~ if [[optimizations][:optimizations]]
   is set to either ~:simple~ or ~:advanced~.
 - ~:provides~ A synthetic namespace that is associated with the
   library. This is typically a vector with a single string, but it has
