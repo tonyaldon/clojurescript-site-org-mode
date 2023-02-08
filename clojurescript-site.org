@@ -1,6 +1,7 @@
 #+TITLE: ClojureScript website in org-mode
 #+AUTHOR: Tony aldon
 #+DATE: <2021-11-26 Fri>
+#+VERSION: 0.1
 
 # REPOSITORY_CLOJURESCRIPT_SITE  https://github.com/clojure/clojurescript-site
 # COMMIT_CLOJURESCRIPT_SITE      d77af77
